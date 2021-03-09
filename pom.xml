@@ -11,6 +11,7 @@
     <groupId>com.miw</groupId>
     <artifactId>farmersborrowbench</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>farmersborrowbench</name>
     <description>FarmersBorrowBench project</description>
     <properties>
@@ -48,6 +49,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency> <!-- i.v.m. dat Views beschikbaar moeten worden gesteld voor de Tomcat server -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>
