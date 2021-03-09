@@ -44,7 +44,7 @@
             <h5 class="bsntext">BSN:</h5>
             <H3 class="bsnuserinfo">${user.bsn}</H3><br>
             <h5 class="accountrekeningnummer">IBAN:</h5>
-            <h3 class="accountrekeningnummerïnfo">${account.rekeningNummer}</h3><br>
+            <h3 class="accountrekeningnummerïnfo">${account.accountNumber}</h3><br>
         </div><!-- rekeningGegevens -->
     </div><!-- fadeInOne -->
 </main>

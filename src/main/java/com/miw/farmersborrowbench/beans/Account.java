@@ -8,7 +8,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private int saldo;
-    private String rekeningNummer;
+    private String accountNumber;
 
     @ManyToOne
     private User user;
@@ -35,13 +35,14 @@ public class Account {
 
     public void setSaldo(int saldo) {
         this.saldo = saldo;
+
     }
 
-    public String getRekeningNummer() {
-        return rekeningNummer;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setRekeningNummer(String rekeningNummer) {
-        this.rekeningNummer = rekeningNummer;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }

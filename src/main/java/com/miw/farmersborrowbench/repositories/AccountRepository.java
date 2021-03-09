@@ -11,7 +11,7 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
 //    @Query(value = "select max(rekeningNummer) from Account", nativeQuery = true)
 //    int searchLastrekeningNummer();
 
-    @Query(value = "SELECT MAX(a.rekeningNummer) FROM Account a")
+    @Query(value = "SELECT MAX(a.accountNumber) FROM Account a")
     String searchLastRekeningNummer();
 
 

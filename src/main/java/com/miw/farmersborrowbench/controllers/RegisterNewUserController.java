@@ -1,7 +1,7 @@
 package com.miw.farmersborrowbench.controllers;
 
 import com.miw.farmersborrowbench.beans.Account;
-import com.miw.farmersborrowbench.beans.IbanGenerator;
+import com.miw.farmersborrowbench.beans.Iban;
 import com.miw.farmersborrowbench.beans.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 
 @Controller
-public class OpenRekeningController {
+public class RegisterNewUserController {
 
     @Autowired
     UserRepository userRepository;
@@ -30,7 +30,7 @@ public class OpenRekeningController {
 
     public String goToOpenRekening() {
         System.out.println("go to open rekening");
-        return "openRekening";
+        return "registerNewUser";
     }
 
     @PostMapping("/openRekening")
@@ -44,7 +44,7 @@ public class OpenRekeningController {
                         error.getField(), null, error.isBindingFailure(), error.getCodes(),
                         error.getArguments(), error.getDefaultMessage()));
             model.addAllAttributes(result2.getModel());
-            return "openRekening";
+            return "registerNewUser";
         }
 
         User testuser = userRepository.searchByBsn(user.getBsn());
@@ -58,7 +58,7 @@ public class OpenRekeningController {
                 lastBankNumber = "NL69 FBBA 6969697055";
                 accountRepository.save(account);
             } else {
-                account.setRekeningNummer(new IbanGenerator().ibanGenerator(lastBankNumber));
+                account.setAccountNumber(Iban.ibanGenerator(lastBankNumber));
                 accountRepository.save(account);
             }
         } else {
@@ -67,7 +67,7 @@ public class OpenRekeningController {
 
         model.addAttribute("user", user);
         model.addAttribute("account", account);
-        return "toonRekening";
+        return "accountDetails";
     }
 }
 

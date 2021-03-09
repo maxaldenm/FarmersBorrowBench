@@ -48,7 +48,7 @@ public class LoginController {
             //NH: fill model with user and account and show toonRekening
             model.addAttribute("user", testuser);
             model.addAttribute("account", account);
-            return "toonRekening";
+            return "accountDetails";
         } else {
             //todo: show errormessage credentials are incoorrect and remove input from password field
 
