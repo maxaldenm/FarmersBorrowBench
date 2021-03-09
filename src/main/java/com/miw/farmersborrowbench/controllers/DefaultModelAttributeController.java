@@ -1,5 +1,6 @@
 package com.miw.farmersborrowbench.controllers;
 
+//import com.miw.farmersborrowbench.beans.Login;
 import com.miw.farmersborrowbench.beans.User;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,4 +12,9 @@ public class DefaultModelAttributeController {
     public User getDefaultUser(){
         return new User();
     }
+
+//    @ModelAttribute("login")
+//    public Login getDefaultLogin(){
+//        return new Login();
+//    }
 }
