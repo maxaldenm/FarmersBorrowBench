@@ -2,11 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Poppins, serif;
+    font-family: 'Roboto Slab', serif;
 }
 
 body {
-    background-color: grey;
+    height: 100vh;
+    background: linear-gradient(to right bottom, #565656, whitesmoke);
 }
 
 ::-webkit-scrollbar {
@@ -120,19 +121,16 @@ label {
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 1px 0 0 #fff6af;
-    background: #f7971e linear-gradient(to bottom, #f7971e 5%, #f3b24b 100%);
+    background: #f7971e linear-gradient(to bottom, #ff960e 5%, #d76d00 100%);
     border-radius: 4px;
     border: 1px solid #000000;
-    display: inline-block;
     cursor: pointer;
     color: #343434;
-    font-size: 18px;
-    font-weight: bold;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 6px;
-    text-decoration: none;
-    text-shadow: 0 1px 0 #ffee66;
+    height: 24px;
+    padding-bottom: 3px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .myButton:hover {
@@ -146,13 +144,15 @@ label {
 
 main {
     width: 90%;
-    padding: 2%;
-    background-color: grey;
+    padding: 10px;
+    background: linear-gradient(to left bottom, #373737, #484848);
+    backdrop-filter: blur(3em);
     color: black;
     position: relative;
     margin: auto;
-    top: 8vh;
+    top: 10vh;
     overflow: hidden;
+    height: 80vh;
 }
 
 .contentOne {
@@ -229,6 +229,7 @@ main {
     }
 }
 
+
 nav {
     position: fixed;
     top: 0;
@@ -237,9 +238,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
-    background: linear-gradient(to left, #565656, rgba(19, 19, 19, 1));
-);
-    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to left top, #242424, #343434);
     z-index: +1;
 }
 
@@ -259,14 +258,15 @@ nav {
     color: #f7971e;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-size: 20px;
+    font-size: 24px;
     display: inline-block;
+
 }
 
 .nav-links {
     display: flex;
     justify-content: space-around;
-    width: 45%;
+    width: 35%;
 }
 
 .nav-links li {
@@ -278,7 +278,7 @@ nav {
     text-decoration: none;
     letter-spacing: 2px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .burger {
@@ -363,43 +363,21 @@ nav {
 .account {
     width: 100%;
     background-color: whitesmoke;
-    margin: auto;
-    height: 15vh;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
     overflow-y: hidden;
-}
-
-.accountOneTransactionView {
-    margin: 0;
-    height: 11vh;
-    position: relative;
-    top: 0;
-
-
-    overflow-y: auto;
-}
-
-.accountOneTransactionView::-webkit-scrollbar {
-    width: 20px;
-    display: block;
-    height: 100%;
-}
-
-.accountOneTransactionView::-webkit-scrollbar-track {
-    background: #f7971e;
-}
-
-.accountOneTransactionView::-webkit-scrollbar-thumb {
-    background: black;
+    margin-top: 24px;
 }
 
 .accountOneInfoBar {
     position: relative;
-    background-color: #343434;
+    background-color: #242424;
     color: #f7971e;
     display: grid;
     grid-template-columns: 0.3fr 1.5fr 0.3fr 0.7fr;
     width: auto;
-    height: 4vh;
+    height: 36px;
     top: 0;
 }
 
@@ -429,7 +407,46 @@ nav {
     grid-column: 4/5;
     padding: 4px 12px 4px 4px;
     text-align: right;
+}
 
+.accountOneTransactionView {
+    margin: 0;
+    height: 11vh;
+    position: relative;
+    top: 0;
+    overflow-y: auto;
+
+}
+
+.accountOneTransactionView::-webkit-scrollbar {
+    width: 20px;
+    display: block;
+    height: 100%;
+}
+
+.accountOneTransactionView::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #f7971e, #b36401);
+}
+
+.accountOneTransactionView::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, black, #434343);
+    border-radius: 2px;
+    border: 2px solid #f7971e;
+}
+
+.selectionBar {
+    width: 100%;
+    position: relative;
+    height: 36px;
+    top: 0;
+    display: flex;
+    float: right;
+    align-items: center;
+    background-color: #242424;
+}
+
+.selectionBar a {
+    margin-right: 24px;
 }
 
 

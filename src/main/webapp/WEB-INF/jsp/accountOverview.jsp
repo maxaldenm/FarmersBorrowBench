@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/css.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
     <title>accountOverview</title>
 </head>
 <body>
@@ -34,14 +35,17 @@
 </nav>
 
 <main>
-    <div class="fadeInOne">
-        <h2>accountOverview</h2>
+    <h2>Account Overview</h2>
+<c:if test="${!empty(user.accounts)}">
+    <c:forEach var="account" items="${user.accounts}">
+        <div class="fadeInOne">
+
         <div class="account">
             <div class="accountOneInfoBar">
                 <h5 class="userAccountOneIban">IBAN:</h5>
-                <h4 class="userAccountOneIbanInfo">NL28 INGB 0005 8512 35</h4>
+                <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
                 <h5 class="userAccountOnebalance">balance: </h5>
-                <h4 class="userAccountOnebalanceInfo">2.400,36</h4>
+                <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
             </div><!-- accountOneInfoBar -->
             <div class="accountOneTransactionView">
                 <div class="transaction">transaction1</div>
@@ -52,10 +56,17 @@
                 <div class="transaction">transaction6</div>
                 <div class="transaction">transaction7</div>
             </div><!-- accountOneTransactionView -->
-        </div><!-- account -->
+            <div class="selectionBar">
+                <a href="accountDetails" class="myButton">Select</a>
+            </div>
+        </div>
+        <!-- account -->
+    </c:forEach>
     </div><!-- fadeInOne -->
-</main>
+</c:if>
+    </main>
 
-<script src="${pageContext.request.contextPath}/js/app.js"></script>
-</body>
-</html>
+    <script src="${pageContext.request.contextPath}/js/app.js"></script>
+    </body>
+    </html>
+
