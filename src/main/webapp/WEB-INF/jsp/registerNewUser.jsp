@@ -34,6 +34,7 @@
     </div>
 </nav>
 <main>
+    <h2>Register New User</h2>
     <div class="fadeInOne">
         <div class="form-container">
             <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>

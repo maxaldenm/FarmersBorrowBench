@@ -35,14 +35,17 @@
 </nav>
 
 <main>
-    <div class="fadeInOne">
-        <h2>Account Overview</h2>
+    <h2>Account Overview</h2>
+<c:if test="${!empty(user.accounts)}">
+    <c:forEach var="account" items="${user.accounts}">
+        <div class="fadeInOne">
+
         <div class="account">
             <div class="accountOneInfoBar">
                 <h5 class="userAccountOneIban">IBAN:</h5>
-                <h4 class="userAccountOneIbanInfo">NL28 INGB 0005 8512 35</h4>
+                <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
                 <h5 class="userAccountOnebalance">balance: </h5>
-                <h4 class="userAccountOnebalanceInfo">2.400,<sup>36</sup></h4>
+                <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
             </div><!-- accountOneInfoBar -->
             <div class="accountOneTransactionView">
                 <div class="transaction">transaction1</div>
@@ -56,33 +59,14 @@
             <div class="selectionBar">
                 <a href="accountDetails" class="myButton">Select</a>
             </div>
-        </div><!-- account -->
+        </div>
+        <!-- account -->
+    </c:forEach>
     </div><!-- fadeInOne -->
-    <div class="fadeInOne">
+</c:if>
+    </main>
 
-        <div class="account">
-            <div class="accountOneInfoBar">
-                <h5 class="userAccountOneIban">IBAN:</h5>
-                <h4 class="userAccountOneIbanInfo">NL28 INGB 0005 8512 35</h4>
-                <h5 class="userAccountOnebalance">balance: </h5>
-                <h4 class="userAccountOnebalanceInfo">2.400,<sup>36</sup></h4>
-            </div><!-- accountOneInfoBar -->
-            <div class="accountOneTransactionView">
-                <div class="transaction">transaction1</div>
-                <div class="transaction">transaction2</div>
-                <div class="transaction">transaction3</div>
-                <div class="transaction">transaction4</div>
-                <div class="transaction">transaction5</div>
-                <div class="transaction">transaction6</div>
-                <div class="transaction">transaction7</div>
-            </div><!-- accountOneTransactionView -->
-            <div class="selectionBar">
-                <a href="accountDetails" class="myButton"><h4>Select</h4></a>
-            </div>
-        </div><!-- account -->
-    </div><!-- fadeInOne -->
-</main>
+    <script src="${pageContext.request.contextPath}/js/app.js"></script>
+    </body>
+    </html>
 
-<script src="${pageContext.request.contextPath}/js/app.js"></script>
-</body>
-</html>

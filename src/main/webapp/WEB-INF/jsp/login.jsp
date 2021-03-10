@@ -34,6 +34,7 @@
     </div>
 </nav>
 <main>
+    <h2>Login</h2>
     <div class="fadeInOne">
         <div class="form-container">
             <h3>Login:</h3>

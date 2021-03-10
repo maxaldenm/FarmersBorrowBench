@@ -42,14 +42,16 @@ public class LoginController {
             return "login";
         }
         //Account account = accountRepository.searchAccountByUserId(user.getId());
-
-        Optional<Account> account = accountRepository.findById(user.getId()+1);
-        user.addAccount(account.get());
-        userRepository.save(user);
+//
+//        Optional<Account> account = accountRepository.findById(user.getId()+1);
+//        user.addAccount(account.get());
+//        userRepository.save(user);
 
         model.addAttribute("user", user);
 
         //model.addAttribute("account", account);
-        return "accountDetails";
+        //NH return "accountDetails";
+        return "accountOverview";
+
     }
 }
