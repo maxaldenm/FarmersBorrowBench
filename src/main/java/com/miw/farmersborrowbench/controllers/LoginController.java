@@ -1,6 +1,7 @@
 package com.miw.farmersborrowbench.controllers;
 
 import com.miw.farmersborrowbench.beans.Account;
+import com.miw.farmersborrowbench.beans.Login;
 import com.miw.farmersborrowbench.beans.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
@@ -29,30 +30,19 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String processtSubmitLogin(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+    public String processtSubmitLogin(@Valid @ModelAttribute("login") Login login, BindingResult result, Model model) {
         System.out.println("submit login");
+        User user = userRepository.searchByName(login.getUsername());
 
-        //NH: get user from database through userRepository
-        User testuser = userRepository.searchByBsn(user.getBsn());
+        if(result.hasErrors())return "login";
 
-        //NH: get user password from database through userRepository
-        String userPassword = testuser.getPassword();
-        String inputPassword = user.getPassword();
-
-        //NH: check user password against input password
-        if (userPassword.equals(inputPassword)) {
-
-            //NH: get accountiformation for user if credentials are correct
-            Account account = accountRepository.searchAccountByUserId(testuser.getId());
-
-            //NH: fill model with user and account and show accountDetails
-            model.addAttribute("user", testuser);
-            model.addAttribute("account", account);
-            return "accountDetails";
-        } else {
-            //todo: show errormessage credentials are incoorrect and remove input from password field
-
+        if(user==null || !user.getPassword().equals(login.getPassword())){
+            model.addAttribute("loginError", "Login details incorrect");
+            return "login";
         }
-        return "login";
+        Account account = accountRepository.searchAccountByUserId(user.getId());
+        model.addAttribute("user", user);
+        model.addAttribute("account", account);
+        return "accountDetails";
     }
 }

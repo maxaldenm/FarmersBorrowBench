@@ -34,10 +34,10 @@
     <div class="form-container">
         <h3>Login:</h3>
         <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
-        <form:form action="/login" method="post" modelAttribute="user">
+        <form:form action="/login" method="post" modelAttribute="login">
 
-            <label for="bsn"><h3>BSN:</h3></label>
-            <form:input path="bsn" type="text"/><form:errors path="bsn" cssClass="error"/><br>
+            <label for="username"><h3>Username:</h3></label>
+            <form:input path="username" type="text"/><form:errors path="username" cssClass="error"/><br>
 
             <label for="password"><h3>Password:</h3></label>
             <form:password path="password"/><form:errors path="password" cssClass="error"/><br>
@@ -47,6 +47,7 @@
             </div>
 
         </form:form>
+        <label>${loginError}</label>
     </div><!-- form container -->
 </div><!-- fadeInOne -->
 
