@@ -16,12 +16,14 @@ public class User {
     private String username;
     @Size(min = 3, message = "size.longer.than.2")
     private String password;
+    //todo password opslaan als hashcode
 
     @Size(min = 3, message = "size.longer.than.2")
     private String bsn;
     private String fname;
-    private String tussenvoegsel;
+    private String suffix;
     private String lname;
+
 
     private boolean MKB;
 
@@ -84,12 +86,12 @@ public class User {
         this.fname = fname;
     }
 
-    public String getTussenvoegsel() {
-        return tussenvoegsel;
+    public String getsuffix() {
+        return suffix;
     }
 
-    public void setTussenvoegsel(String tussenvoegsel) {
-        this.tussenvoegsel = tussenvoegsel;
+    public void setsuffix(String suffix) {
+        this.suffix = suffix;
     }
 
     public String getLname() {
@@ -115,5 +117,7 @@ public class User {
     public void setSector(Sector sector) {
         this.sector = sector;
     }
+
+
 
 }

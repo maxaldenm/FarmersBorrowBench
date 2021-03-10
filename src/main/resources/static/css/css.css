@@ -61,7 +61,7 @@ label {
     margin-left: 5px;
 }
 
-.usertussenvoegsel {
+.usersuffix {
     display: inline-block;
     text-align: right;
     width: 120px;
@@ -69,7 +69,7 @@ label {
     height: 25px;
 }
 
-.usertussenvoegselinfo {
+.usersuffixinfo {
     display: inline-block;
     height: 25px;
     margin-left: 5px;

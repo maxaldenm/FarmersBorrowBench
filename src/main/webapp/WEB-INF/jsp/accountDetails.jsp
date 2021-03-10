@@ -41,8 +41,8 @@
             <br>
             <h5 class="userfnaam">Username:</h5>
             <H3 class="userfnaaminfo">${user.username}</H3><br>
-            <h5 class="usertussenvoegsel">Password:</h5>
-            <H3 class="usertussenvoegselinfo">${user.password}</H3><br>
+            <h5 class="usersuffix">Password:</h5>
+            <H3 class="usersuffixinfo">${user.password}</H3><br>
             <h5 class="bsntext">BSN:</h5>
             <H3 class="bsnuserinfo">${user.bsn}</H3><br>
             <h5 class="accountaccountNumber">IBAN:</h5>

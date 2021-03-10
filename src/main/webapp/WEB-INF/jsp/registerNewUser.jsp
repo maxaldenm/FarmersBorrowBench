@@ -52,8 +52,8 @@
                 <label for="fname"><h3>First name:</h3></label>
                 <form:input path="fname" type="text"/><br>
 
-                <label for="tussenvoegsel"><h3>tussenvoegsel:</h3></label>
-                <form:input path="tussenvoegsel" type="text"/><br>
+                <label for="suffix"><h3>suffix:</h3></label>
+                <form:input path="suffix" type="text"/><br>
 
                 <label for="lname"><h3>Last name:</h3></label>
                 <form:input path="lname" type="text"/><br>
@@ -63,6 +63,7 @@
 
                 <label for="sector"><h3>Sector:</h3></label>
                 <form:select path="sector" items="${sectorItems}"/><br>
+
 
                 <div class="buttons">
                     <input class="myButton" type="submit" value="Submit">

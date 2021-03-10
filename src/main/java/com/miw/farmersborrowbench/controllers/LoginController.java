@@ -1,6 +1,6 @@
 package com.miw.farmersborrowbench.controllers;
 
-import com.miw.farmersborrowbench.beans.Account;
+
 import com.miw.farmersborrowbench.beans.Login;
 import com.miw.farmersborrowbench.beans.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.Optional;
+
 
 @Controller
 public class LoginController {
@@ -31,7 +31,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String processtSubmitLogin(@Valid @ModelAttribute("login") Login login, BindingResult result, Model model) {
+    public String processSubmitLogin(@Valid @ModelAttribute("login") Login login, BindingResult result, Model model) {
         System.out.println("submit login");
         User user = userRepository.searchByName(login.getUsername());
 

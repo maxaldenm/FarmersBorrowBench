@@ -15,6 +15,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -29,22 +30,24 @@ public class RegisterNewUserController {
 
     @GetMapping("/registerNewUser")
 
-    public String goToregisterNewUser() {
+    public String goToRegisterNewUser() {
         System.out.println("go to open Account");
         return "registerNewUser";
     }
 
     @PostMapping("/registerNewUser")
     public String processtSubmitregisterNewUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
-        System.out.println("submit open Account");
+        System.out.println("submit New User");
         if (result.hasErrors()) {
             BeanPropertyBindingResult result2 = new BeanPropertyBindingResult(user, result.getObjectName());
-            for(ObjectError error: result.getGlobalErrors()) {
+            for (ObjectError error : result.getGlobalErrors()) {
                 result2.addError(error);
             }
-            for (FieldError error: result.getFieldErrors()) {
-                if(error.getField().equals("password")) result2.addError(new FieldError(error.getObjectName(), error.getField(), null, error.isBindingFailure(), error.getCodes(), error.getArguments(), error.getDefaultMessage()));
-                else result2.addError(new FieldError(error.getObjectName(), error.getField(), error.getRejectedValue(), error.isBindingFailure(), error.getCodes(), error.getArguments(), error.getDefaultMessage()));
+            for (FieldError error : result.getFieldErrors()) {
+                if (error.getField().equals("password"))
+                    result2.addError(new FieldError(error.getObjectName(), error.getField(), null, error.isBindingFailure(), error.getCodes(), error.getArguments(), error.getDefaultMessage()));
+                else
+                    result2.addError(new FieldError(error.getObjectName(), error.getField(), error.getRejectedValue(), error.isBindingFailure(), error.getCodes(), error.getArguments(), error.getDefaultMessage()));
             }
             model.addAllAttributes(result2.getModel());
             return "registerNewUser";
@@ -55,6 +58,7 @@ public class RegisterNewUserController {
         if (testuser == null) {
             account.setUser(user);
             account.setBalance(0);
+            account.setPinNumber(1234);
             String lastBankNumber = accountRepository.searchLastAccountNumber();
             if (lastBankNumber == null) {
                 lastBankNumber = "NL69FBBA6969697055";
