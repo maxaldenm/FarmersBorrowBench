@@ -14,7 +14,6 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
     @Query(value = "SELECT MAX(a.accountNumber) FROM Account a")
     String searchLastAccountNumber();
 
-
-    @Query("SELECT a FROM Account a WHERE a.user.id = :id")
-    Account searchAccountByUserId(int id);
+//    @Query("SELECT a FROM Account a WHERE a.user.id = :id")
+//    Account searchAccountByUserId(int id);
 }

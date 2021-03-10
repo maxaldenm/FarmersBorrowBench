@@ -49,26 +49,29 @@ public class RegisterNewUserController {
             model.addAllAttributes(result2.getModel());
             return "registerNewUser";
         }
+        System.out.println("user object bsn:" + user.getBsn());
         User testuser = userRepository.searchByBsn(user.getBsn());
         Account account = new Account();
         if (testuser == null) {
-            userRepository.save(user);
             account.setUser(user);
             account.setBalance(0);
             String lastBankNumber = accountRepository.searchLastAccountNumber();
             if (lastBankNumber == null) {
-                lastBankNumber = "NL69 FBBA 6969697055";
+                lastBankNumber = "NL69FBBA6969697055";
                 account.setAccountNumber(lastBankNumber);
-                accountRepository.save(account);
+
             } else {
-                account.setAccountNumber(Iban.ibanGenerator(lastBankNumber));
-                accountRepository.save(account);
+                account.setAccountNumber(Iban.generateIban(lastBankNumber));
             }
+            user.addAccount(account);
+            accountRepository.save(account);
+            userRepository.save(user);
+
         } else {
             //bestaat wel
         }
+
         model.addAttribute("user", user);
-        model.addAttribute("account", account);
         return "accountDetails";
     }
 }

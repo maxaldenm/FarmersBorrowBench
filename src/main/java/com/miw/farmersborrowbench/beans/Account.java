@@ -1,6 +1,7 @@
 package com.miw.farmersborrowbench.beans;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,18 +11,12 @@ public class Account {
     private Integer id;
     private int balance;
     private String accountNumber;
-    private String Iban;
+    //private String Iban;
     private int pinNumber;
 
-//    @OneToMany(FetchType.EAGER)
-//    @JoinColumn(name="id")
-//    private List<User> userList;
-    //private List<Transaction> transactionList;
 
-
-    @ManyToOne
-    private User user;
-
+    @ManyToMany(mappedBy = "accounts")
+    private List<User> users = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -47,14 +42,6 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public String getIban() {
-        return Iban;
-    }
-
-    public void setIban(String iban) {
-        Iban = iban;
-    }
-
     public int getPinNumber() {
         return pinNumber;
     }
@@ -63,11 +50,11 @@ public class Account {
         this.pinNumber = pinNumber;
     }
 
-    public User getUser() {
-        return user;
+    public List<User> getUserList() {
+        return users;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        users.add(user);
     }
 }

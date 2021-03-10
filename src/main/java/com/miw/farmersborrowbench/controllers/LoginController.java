@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class LoginController {
@@ -40,9 +41,15 @@ public class LoginController {
             model.addAttribute("loginError", "Login details incorrect");
             return "login";
         }
-        Account account = accountRepository.searchAccountByUserId(user.getId());
+        //Account account = accountRepository.searchAccountByUserId(user.getId());
+
+        Optional<Account> account = accountRepository.findById(user.getId()+1);
+        user.addAccount(account.get());
+        userRepository.save(user);
+
         model.addAttribute("user", user);
-        model.addAttribute("account", account);
+
+        //model.addAttribute("account", account);
         return "accountDetails";
     }
 }

@@ -2,6 +2,8 @@ package com.miw.farmersborrowbench.beans;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -26,8 +28,24 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Sector sector;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable
+    private List<Account> accounts = new ArrayList<>();
+
     public int getId() {
         return id;
+    }
+
+    public void addAccount(Account account) {
+        accounts.add(account);
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public Integer getAccountId() {
+        return accounts.get(0).getId();
     }
 
     public void setId(int id) {
@@ -97,4 +115,5 @@ public class User {
     public void setSector(Sector sector) {
         this.sector = sector;
     }
+
 }

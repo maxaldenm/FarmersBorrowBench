@@ -11,7 +11,7 @@ public class StringToEnumConvertor implements Converter<String, Sector> {
         if(s.equals("Weed")) return Sector.WEED;
         if(s.equals("XTC")) return Sector.XTC;
         if(s.equals("Meth")) return Sector.METH;
-        if(s.equals("Adult")) return Sector.CRYPTO;
+        if(s.equals("Adult")) return Sector.ADULT;
         return Sector.CRYPTO;
     }
 }

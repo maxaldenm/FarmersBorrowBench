@@ -42,7 +42,7 @@
             <h5 class="bsntext">BSN:</h5>
             <H3 class="bsnuserinfo">${user.bsn}</H3><br>
             <h5 class="accountaccountNumber">IBAN:</h5>
-            <h3 class="accountaccountNumberïnfo">${account.accountNumber}</h3><br>
+            <h3 class="accountaccountNumberïnfo">${user.accounts.get(0).accountNumber}</h3><br>
         </div><!-- accountDetails -->
     </div><!-- fadeInOne -->
 </main>
