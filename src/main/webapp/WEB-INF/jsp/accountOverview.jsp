@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/css.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
     <title>accountOverview</title>
 </head>
 <body>
@@ -35,13 +36,13 @@
 
 <main>
     <div class="fadeInOne">
-        <h2>accountOverview</h2>
+        <h2>Account Overview</h2>
         <div class="account">
             <div class="accountOneInfoBar">
                 <h5 class="userAccountOneIban">IBAN:</h5>
                 <h4 class="userAccountOneIbanInfo">NL28 INGB 0005 8512 35</h4>
                 <h5 class="userAccountOnebalance">balance: </h5>
-                <h4 class="userAccountOnebalanceInfo">2.400,36</h4>
+                <h4 class="userAccountOnebalanceInfo">2.400,<sup>36</sup></h4>
             </div><!-- accountOneInfoBar -->
             <div class="accountOneTransactionView">
                 <div class="transaction">transaction1</div>
@@ -52,6 +53,32 @@
                 <div class="transaction">transaction6</div>
                 <div class="transaction">transaction7</div>
             </div><!-- accountOneTransactionView -->
+            <div class="selectionBar">
+                <a href="accountDetails" class="myButton">Select</a>
+            </div>
+        </div><!-- account -->
+    </div><!-- fadeInOne -->
+    <div class="fadeInOne">
+
+        <div class="account">
+            <div class="accountOneInfoBar">
+                <h5 class="userAccountOneIban">IBAN:</h5>
+                <h4 class="userAccountOneIbanInfo">NL28 INGB 0005 8512 35</h4>
+                <h5 class="userAccountOnebalance">balance: </h5>
+                <h4 class="userAccountOnebalanceInfo">2.400,<sup>36</sup></h4>
+            </div><!-- accountOneInfoBar -->
+            <div class="accountOneTransactionView">
+                <div class="transaction">transaction1</div>
+                <div class="transaction">transaction2</div>
+                <div class="transaction">transaction3</div>
+                <div class="transaction">transaction4</div>
+                <div class="transaction">transaction5</div>
+                <div class="transaction">transaction6</div>
+                <div class="transaction">transaction7</div>
+            </div><!-- accountOneTransactionView -->
+            <div class="selectionBar">
+                <a href="accountDetails" class="myButton"><h4>Select</h4></a>
+            </div>
         </div><!-- account -->
     </div><!-- fadeInOne -->
 </main>
