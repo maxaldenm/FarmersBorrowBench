@@ -2,7 +2,6 @@ package com.miw.farmersborrowbench.beans;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 public class User {
@@ -18,15 +17,14 @@ public class User {
 
     @Size(min = 3, message = "size.longer.than.2")
     private String bsn;
-    private String name;
-    private String address;
-    private String city;
+    private String fname;
+    private String tussenvoegsel;
+    private String lname;
 
     private boolean MKB;
 
-    private String KVK;
-    private String company;
-    private String sector;
+    @Enumerated(EnumType.STRING)
+    private Sector sector;
 
     public int getId() {
         return id;
@@ -60,28 +58,28 @@ public class User {
         this.bsn = BSN;
     }
 
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getAddress() {
-        return address;
+    public String getTussenvoegsel() {
+        return tussenvoegsel;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setTussenvoegsel(String tussenvoegsel) {
+        this.tussenvoegsel = tussenvoegsel;
     }
 
-    public String getCity() {
-        return city;
+    public String getLname() {
+        return lname;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public boolean isMKB() {
@@ -92,29 +90,11 @@ public class User {
         this.MKB = MKB;
     }
 
-    public String getKVK() {
-        return KVK;
-    }
-
-    public void setKVK(String KVK) {
-        this.KVK = KVK;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public String getSector() {
+    public Sector getSector() {
         return sector;
     }
 
-    public void setSector(String sector) {
+    public void setSector(Sector sector) {
         this.sector = sector;
     }
-
-
 }

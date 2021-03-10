@@ -35,20 +35,30 @@
         <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
         <form:form action="/registerNewUser" method="post" modelAttribute="user">
 
+            <label for="username"><h3>Username:</h3></label>
+            <form:input path="username" type="text"/><form:errors path="username" cssClass="error"/><br>
+
+            <label for="password"><h3>Password:</h3></label>
+            <form:password path="password"/><form:errors path="password" cssClass="error"/><br>
+
             <label for="bsn"><h3>BSN:</h3></label>
             <form:input path="bsn" type="text"/><form:errors path="bsn" cssClass="error"/><br>
 
             <label for="fname"><h3>First name:</h3></label>
-            <form:input path="fname" type="text"/><form:errors path="fname" cssClass="error"/><br>
+            <form:input path="fname" type="text"/><br>
 
             <label for="tussenvoegsel"><h3>tussenvoegsel:</h3></label>
             <form:input path="tussenvoegsel" type="text"/><br>
 
             <label for="lname"><h3>Last name:</h3></label>
-            <form:input path="lname" type="text"/><form:errors path="lname" cssClass="error"/><br>
+            <form:input path="lname" type="text"/><br>
 
-            <label for="password"><h3>Password:</h3></label>
-            <form:password path="password"/><form:errors path="password" cssClass="error"/><br>
+            <label><h3>MKB:</h3></label>
+            <form:checkbox path="MKB"/><br>
+
+            <label for="sector"><h3>Sector:</h3></label>
+            <form:select path="sector" items="${sectorItems}"/><br>
+
             <div class="buttons">
                 <input class="myButton" type="submit" value="Submit">
             </div>

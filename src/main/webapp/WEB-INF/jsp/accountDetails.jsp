@@ -35,12 +35,10 @@
         <div class="accountDetails">
             <h3>Register New User:</h3>
             <br>
-            <h5 class="userfnaam">Voornaam:</h5>
-            <H3 class="userfnaaminfo">${user.fname}</H3><br>
-            <h5 class="usertussenvoegsel">Suffix:</h5>
-            <H3 class="usertussenvoegselinfo">${user.tussenvoegsel}</H3><br>
-            <h5 class="userachternaam">Achternaam:</h5>
-            <H3 class="userachternaaminfo">${user.lname}</H3><br>
+            <h5 class="userfnaam">Username:</h5>
+            <H3 class="userfnaaminfo">${user.username}</H3><br>
+            <h5 class="usertussenvoegsel">Password:</h5>
+            <H3 class="usertussenvoegselinfo">${user.password}</H3><br>
             <h5 class="bsntext">BSN:</h5>
             <H3 class="bsnuserinfo">${user.bsn}</H3><br>
             <h5 class="accountaccountNumber">IBAN:</h5>
