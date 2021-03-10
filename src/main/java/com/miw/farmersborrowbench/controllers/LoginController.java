@@ -29,7 +29,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String verwerktSubmitLogin(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+    public String processtSubmitLogin(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
         System.out.println("submit login");
 
         //NH: get user from database through userRepository
@@ -45,7 +45,7 @@ public class LoginController {
             //NH: get accountiformation for user if credentials are correct
             Account account = accountRepository.searchAccountByUserId(testuser.getId());
 
-            //NH: fill model with user and account and show toonRekening
+            //NH: fill model with user and account and show accountDetails
             model.addAttribute("user", testuser);
             model.addAttribute("account", account);
             return "accountDetails";

@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AccountOverviewController {
 
-    @GetMapping("/rekeningOverzicht")
-    public String goToRekeningOverzicht() {
-        System.out.println("in rekening overzicht controller");
+    @GetMapping("/accountOverview")
+    public String goToAccountOverview() {
+        System.out.println("in account overview controller");
         return "accountOverview";
     }
 }

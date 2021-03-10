@@ -102,7 +102,7 @@ label {
     margin-left: 5px;
 }
 
-.accountrekeningnummer {
+.accountaccountNumber {
     display: inline-block;
     text-align: right;
     width: 120px;
@@ -110,7 +110,7 @@ label {
     height: 25px;
 }
 
-.accountrekeningnummerïnfo {
+.accountaccountNumberïnfo {
     display: inline-block;
     height: 25px;
     margin-left: 5px;
@@ -237,16 +237,30 @@ nav {
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
-    background-color: #343434;
+    background: linear-gradient(to left, #565656, rgba(19, 19, 19, 1));
+);
     font-family: "Poppins", sans-serif;
     z-index: +1;
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logoImg {
+    height: 60px;
+    padding: 5px;
+    display: inline-block;
+}
+
+.logoText {
     color: #f7971e;
     text-transform: uppercase;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
     font-size: 20px;
+    display: inline-block;
 }
 
 .nav-links {
@@ -280,9 +294,6 @@ nav {
 }
 
 @media screen and (max-width: 1024px) {
-    .nav-links {
-        width: 50%;
-    }
 
     input {
         width: 40%;
@@ -404,17 +415,17 @@ nav {
     text-align: center;
 }
 
-.userAccountOneSaldo {
+.userAccountOnebalance {
     grid-column: 3/4;
     padding: 4px;
     text-align: center;
 }
 
-.userAccountOneSaldoInfo:before {
+.userAccountOnebalanceInfo:before {
     content: '\20AC';
 }
 
-.userAccountOneSaldoInfo {
+.userAccountOnebalanceInfo {
     grid-column: 4/5;
     padding: 4px 12px 4px 4px;
     text-align: right;

@@ -58,7 +58,7 @@ public class Iban {
         do {
             String sub = iban.substring(10);
             sub = sub.replaceAll("\\s+", "");
-            Long plus = Long.parseLong(sub);
+            long plus = Long.parseLong(sub);
             plus++;
             iban = iban.substring(0, 10) + plus;
         } while (!Iban.ibanTest(iban));

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/css.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <title>nieuweRekening</title>
+    <title>registerNewUser</title>
 </head>
 <body>
 <nav>
@@ -19,8 +19,8 @@
     </div>
     <ul class="nav-links">
         <li><a href="home">Home</a></li>
-        <li><a href="openRekening">Open Rekening</a></li>
-        <li><a href="rekeningOverzicht">Rekeningoverzicht</a></li>
+        <li><a href="registerNewUser">Register</a></li>
+        <li><a href="accountOverview">accountOverview</a></li>
         <li><a href="login">Login</a></li>
     </ul>
     <div class="burger">
@@ -32,8 +32,8 @@
 <main>
     <div class="fadeInOne">
 
-        <div class="rekeningGegevens">
-            <h3>Nieuwe Rekening:</h3>
+        <div class="accountDetails">
+            <h3>Register New User:</h3>
             <br>
             <h5 class="userfnaam">Voornaam:</h5>
             <H3 class="userfnaaminfo">${user.fname}</H3><br>
@@ -43,9 +43,9 @@
             <H3 class="userachternaaminfo">${user.lname}</H3><br>
             <h5 class="bsntext">BSN:</h5>
             <H3 class="bsnuserinfo">${user.bsn}</H3><br>
-            <h5 class="accountrekeningnummer">IBAN:</h5>
-            <h3 class="accountrekeningnummerïnfo">${account.accountNumber}</h3><br>
-        </div><!-- rekeningGegevens -->
+            <h5 class="accountaccountNumber">IBAN:</h5>
+            <h3 class="accountaccountNumberïnfo">${account.accountNumber}</h3><br>
+        </div><!-- accountDetails -->
     </div><!-- fadeInOne -->
 </main>
 

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountRepository extends CrudRepository<Account, Integer> {
 
-//    @Query(value = "select max(rekeningNummer) from Account", nativeQuery = true)
-//    int searchLastrekeningNummer();
+//    @Query(value = "select max(accountNumber) from Account", nativeQuery = true)
+//    int searchLastaccountNumber();
 
     @Query(value = "SELECT MAX(a.accountNumber) FROM Account a")
-    String searchLastRekeningNummer();
+    String searchLastAccountNumber();
 
 
     @Query("SELECT a FROM Account a WHERE a.user.id = :id")

@@ -1,10 +1,8 @@
 package com.miw.farmersborrowbench.beans;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class User {
@@ -13,12 +11,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Size(min=3, message = "size.longer.than.2")
+    @Size(min = 3, message = "size.longer.than.2")
     private String username;
-    @Size(min=3, message = "size.longer.than.2")
+    @Size(min = 3, message = "size.longer.than.2")
     private String password;
 
-    @Size(min=3, message = "size.longer.than.2")
+    @Size(min = 3, message = "size.longer.than.2")
     private String bsn;
     private String name;
     private String address;
@@ -117,4 +115,6 @@ public class User {
     public void setSector(String sector) {
         this.sector = sector;
     }
+
+
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/css.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <title>MyFirstBank: Open Rekening</title>
+    <title>Register New User</title>
 </head>
 <body>
 <nav>
@@ -19,8 +19,8 @@
     </div>
     <ul class="nav-links">
         <li><a href="home">Home</a></li>
-        <li><a href="openRekening">Open Rekening</a></li>
-        <li><a href="rekeningOverzicht">Rekeningoverzicht</a></li>
+        <li><a href="registerNewUser">Register</a></li>
+        <li><a href="accountOverview">accountOverview</a></li>
         <li><a href="login">Login</a></li>
     </ul>
     <div class="burger">
@@ -33,7 +33,7 @@
 <div class="fadeInOne">
     <div class="form-container">
         <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
-        <form:form action="/openRekening" method="post" modelAttribute="user">
+        <form:form action="/registerNewUser" method="post" modelAttribute="user">
 
             <label for="bsn"><h3>BSN:</h3></label>
             <form:input path="bsn" type="text"/><form:errors path="bsn" cssClass="error"/><br>

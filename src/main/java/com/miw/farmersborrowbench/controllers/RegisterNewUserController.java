@@ -26,18 +26,18 @@ public class RegisterNewUserController {
     AccountRepository accountRepository;
 
 
-    @GetMapping("/openRekening")
+    @GetMapping("/registerNewUser")
 
-    public String goToOpenRekening() {
-        System.out.println("go to open rekening");
+    public String goToregisterNewUser() {
+        System.out.println("go to open Account");
         return "registerNewUser";
     }
 
-    @PostMapping("/openRekening")
-    public String verwerktSubmitOpenRekening(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
-        System.out.println("submit open rekening");
+    @PostMapping("/registerNewUser")
+    public String processtSubmitregisterNewUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+        System.out.println("submit open Account");
         if (result.hasErrors()) {
-            //todo: errormessages worden niet meer getoondin de openRekeningController
+            //todo: errormessages worden niet meer getoondin de registerNewUserController
             BeanPropertyBindingResult result2 = new BeanPropertyBindingResult(user, result.getObjectName());
             for (FieldError error : result.getFieldErrors())
                 if (error.getField().equals("password")) result2.addError(new FieldError(error.getObjectName(),
@@ -52,8 +52,8 @@ public class RegisterNewUserController {
         if (testuser == null) {
             userRepository.save(user);
             account.setUser(user);
-            account.setSaldo(0);
-            String lastBankNumber = accountRepository.searchLastRekeningNummer();
+            account.setBalance(0);
+            String lastBankNumber = accountRepository.searchLastAccountNumber();
             if (lastBankNumber == null) {
                 lastBankNumber = "NL69 FBBA 6969697055";
                 accountRepository.save(account);

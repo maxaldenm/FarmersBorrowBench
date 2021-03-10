@@ -4,8 +4,8 @@ public class BsnCheck {
 
 //    Het burgerservicenummer bestaat uit 9 cijfers en voldoet aan een variant op de elfproef. De variant is in het
 //    laatste cijfer, dat in plaats van met 1, met -1 wordt vermenigvuldigd. Dit verschil is er opzettelijk ingebracht
-//    zodat een abusievelijk ingevoerd bankrekeningnummer als foutief wordt aangemerkt (dit gaat natuurlijk niet op als
-//    het nummer eindigt op een 0, in welk geval een nummer zowel een geldig bankrekeningnummer als BSN kan zijn. Voor
+//    zodat een abusievelijk ingevoerd bankaccountNumber als foutief wordt aangemerkt (dit gaat natuurlijk niet op als
+//    het nummer eindigt op een 0, in welk geval een nummer zowel een geldig bankaccountNumber als BSN kan zijn. Voor
 //    het burgerservicenummer geldt in ieder geval dat het wel degelijk op een 0 mag eindigen). Als het
 //    burgerservicenummer wordt voorgesteld door ABCDEFGHI, dan moet
 //
