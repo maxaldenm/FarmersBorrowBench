@@ -34,31 +34,17 @@
 <div class="fadeInOne">
     <div class="form-container">
         <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
-        <form:form action="/registerNewUser" method="post" modelAttribute="user">
+        <form:form action="/moneyTransaction" method="post" modelAttribute="moneytransactionform">
 
-            <label for="username"><h3>Username:</h3></label>
-            <form:input path="username" type="text"/><form:errors path="username" cssClass="error"/><br>
+            <label for="amount"><h3>Amount:</h3></label>
+            <form:input path="amount" type="text"/><form:errors path="amount" cssClass="error"/><br>
 
-            <label for="password"><h3>Password:</h3></label>
-            <form:password path="password"/><form:errors path="password" cssClass="error"/><br>
+            <label for="description"><h3>Description:</h3></label>
+            <form:input path="description"/><form:errors path="description" cssClass="error"/><br>
 
-            <label for="bsn"><h3>BSN:</h3></label>
-            <form:input path="bsn" type="text"/><form:errors path="bsn" cssClass="error"/><br>
-
-            <label for="fname"><h3>First name:</h3></label>
-            <form:input path="fname" type="text"/><br>
-
-            <label for="tussenvoegsel"><h3>tussenvoegsel:</h3></label>
-            <form:input path="tussenvoegsel" type="text"/><br>
-
-            <label for="lname"><h3>Last name:</h3></label>
-            <form:input path="lname" type="text"/><br>
-
-            <label><h3>MKB:</h3></label>
-            <form:checkbox path="MKB"/><br>
-
-            <label for="sector"><h3>Sector:</h3></label>
-            <form:select path="sector" items="${sectorItems}"/><br>
+            <label for="debitIban"><h3>IBAN receiver:</h3></label>
+            <form:input path="debitIban" type="text"/><form:errors path="debitIban" cssClass="error"/><br>
+            <form:hidden path="creditIban" value="${accountNumber}"/>
 
             <div class="buttons">
                 <input class="myButton" type="submit" value="Submit">

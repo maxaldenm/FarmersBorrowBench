@@ -57,7 +57,7 @@
                 <div class="transaction">transaction7</div>
             </div><!-- accountOneTransactionView -->
             <div class="selectionBar">
-                <a href="transaction" class="myButton">Transaction</a>
+                <a href="/goToMoneyTransaction?accountNumber=${account.accountNumber}" class="myButton">Transaction</a>
             </div>
         </div>
         <!-- account -->
