@@ -23,11 +23,11 @@ public class User {
     @Size(min = 9, max = 9, message = "{bsn.size}")
     private String bsn;
     @NotEmpty(message = "{not.empty}")
-    @Pattern(regexp = "[a-zA-Z-]", message = "{name.invalid}")
+    @Pattern(regexp = "^[a-zA-Z-]*$", message = "{name.invalid}")
     private String fname;
     private String suffix;
     @NotEmpty(message = "{not.empty}")
-    @Pattern(regexp = "[a-zA-Z-]", message = "{name.invalid}")
+    @Pattern(regexp = "^[a-zA-Z-]*$", message = "{name.invalid}")
     private String lname;
     @NotEmpty(message = "{not.empty}")
     private String postcode;
@@ -36,7 +36,7 @@ public class User {
     @NotEmpty(message = "{not.empty}")
     private String streetname;
     @NotEmpty(message = "{not.empty}")
-    @Pattern(regexp = "[0,9]", message = "{houseNr.invalid}")
+    @Pattern(regexp = "^[0-9]*$", message = "{houseNr.invalid}")
     private String houseNr;
 
     private boolean MKB;
