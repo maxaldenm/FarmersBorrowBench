@@ -43,12 +43,12 @@ label {
     display: inline-block;
 }
 
-.show-mkb {
+.showMkb {
     display: none;
 }
 
-.trigger:checked .show-mkb {
-    display: block;
+.trigger:checked+.showMkb {
+    display: flex;
 }
 
 .form-container .buttons {

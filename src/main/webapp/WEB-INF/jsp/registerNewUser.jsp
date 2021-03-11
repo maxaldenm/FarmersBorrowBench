@@ -70,11 +70,13 @@
                 <form:input path="houseNr" type="text"/><form:errors path="houseNr" cssClass="error"/><br>
 
                 <label><h3>MKB:</h3></label>
-                <form:checkbox class= "trigger" path="MKB"/><br>
-                <div class="show-mkb">
+
+                <input type="checkbox" class="trigger" value="MKB"/>
+                <div class="showMkb">
                     <label for="sector"><h3>Sector:</h3></label>
                     <form:select path="sector" items="${sectorItems}"/><br>
                 </div>
+
 
                 <div class="buttons">
                     <input class="myButton" type="submit" value="Submit">

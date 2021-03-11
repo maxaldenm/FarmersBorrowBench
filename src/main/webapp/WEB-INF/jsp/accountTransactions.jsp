@@ -64,7 +64,7 @@
                         Amount
                     </div>
                 </div><!-- transaction -->
-                <div class="transactionOdd">
+                <div class="transacitonOdd">
                     <div class="creditAccount">
                         IBAN Credit account
                     </div>
