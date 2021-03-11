@@ -2,16 +2,15 @@ package com.miw.farmersborrowbench.controllers;
 
 import com.miw.farmersborrowbench.beans.Account;
 import com.miw.farmersborrowbench.beans.Login;
+import com.miw.farmersborrowbench.beans.MoneyTransaction;
 import com.miw.farmersborrowbench.beans.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
+import com.miw.farmersborrowbench.repositories.MoneyTransactionRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,8 +23,15 @@ public class AccountTransactionsController {
     @Autowired
     AccountRepository accountRepository;
 
+    @Autowired
+    MoneyTransactionRepository moneyTransactionRepository;
+
     @PostMapping("/accountTransactions")
-    public String getAccountTransactions(@SessionAttribute("account") Account account, Model model) {
+    public String getAccountTransactions(@ModelAttribute("account") Account account, Model model) {
+        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByCreditAccountAccountNumber(account.getAccountNumber());
+        System.out.println(account);
+
+        model.addAttribute("moneyTransactions", moneyTransactions);
         model.addAttribute("account", account);
         return "accountTransactions";
     }

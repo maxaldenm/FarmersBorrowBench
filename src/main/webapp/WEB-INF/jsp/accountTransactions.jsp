@@ -46,219 +46,43 @@
                 <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
                 <h5 class="userAccountOnebalance">balance: </h5>
                 <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
-            </div><!-- accountOneInfoBar -->
+            </div>
+            <!-- accountOneInfoBar -->
             <div class="thisTransactionInfoBar">
                 <h5 class="creditAccount">credit account</h5>
                 <h5 class="transferDescription">transfer Description</h5>
                 <h5 class="transferAmount">Amount</h5>
-            </div><!-- thisTransactionInfoBar -->
-            <div class="thisAccountTransactionView">
-                <div class="transactionEven">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionOdd">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionEven">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionOdd">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionEven">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionOdd">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionEven">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionOdd">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionEven">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionOdd">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionEven">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionOdd">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionEven">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionOdd">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionEven">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionOdd">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionEven">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-                <div class="transactionOdd">
-                    <div class="creditAccount">
-                        IBAN Credit account
-                    </div>
-                    <div class="transferDescription">
-                        Transfer Description
-                    </div>
-                    <div class="transferAmount">
-                        Amount
-                    </div>
-                </div><!-- transaction -->
-            </div><!-- accountOneTransactionView -->
-            <div class="selectionBar">
-                <a href="/goToMoneyTransaction?accountNumber=${account.accountNumber}" class="myButton">Transaction</a>
             </div>
-        </div>
-        <!-- account -->
+            <!-- thisTransactionInfoBar -->
+            <div class="thisAccountTransactionView">
+            <c:if test="${!empty(moneyTransactions)}">
+            <c:forEach var="transaction" items="${moneyTransactions}">
 
-    </div><!-- fadeInOne -->
+                <div class="transactionEven">
+                    <div class="creditAccount">
+                            ${transaction.debitAccount.accountNumber}
+                    </div>
+                    <div class="transferDescription">
+                            ${transaction.description}
+                    </div>
+                    <div class="transferAmount">
+                            ${transaction.amount}
+                    </div>
+                </div>
+
+                </c:forEach>
+            </div>
+            </c:if>
+
+        </div>
+        <div class="selectionBar">
+            <a href="${pageContext.request.contextPath}/goToMoneyTransaction?accountNumber=${account.accountNumber}"
+               class="myButton">Transaction</a>
+        </div>
+    </div>
+
+
+
 
 </main>
 

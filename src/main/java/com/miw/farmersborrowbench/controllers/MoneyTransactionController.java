@@ -25,12 +25,12 @@ public class MoneyTransactionController {
     MoneyTransactionRepository moneyTransactionRepository;
 
     @PostMapping("/moneyTransaction")
-    public String processSubmitLogin(@Valid @ModelAttribute("moneytransactionform") MoneyTransactionForm moneyTransactionForm, BindingResult result, Model model) {
+    public String processSubmitMoneyTransaction(@Valid @ModelAttribute("moneytransactionform") MoneyTransactionForm moneyTransactionForm, BindingResult result, Model model) {
         System.out.println("submit money transaction");
         if (result.hasErrors()) return "moneyTransaction";
         Account debitAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getDebitIban());
         Account creditAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getCreditIban());
-        if(debitAccount!=null && creditAccount!=null){
+        if (debitAccount != null && creditAccount != null) {
             MoneyTransaction moneyTransaction = new MoneyTransaction();
             moneyTransaction.setAmount(Integer.parseInt(moneyTransactionForm.getAmount()));
             moneyTransaction.setDescription(moneyTransactionForm.getDescription());
@@ -38,6 +38,7 @@ public class MoneyTransactionController {
             moneyTransaction.setCreditAccount(creditAccount);
             moneyTransactionRepository.save(moneyTransaction);
         }
-        return "accountTransactions";
+        model.addAttribute("account", creditAccount);
+        return "forward:/accountTransactions";
     }
 }

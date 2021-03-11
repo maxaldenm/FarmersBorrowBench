@@ -2,8 +2,10 @@ package com.miw.farmersborrowbench.controllers;
 
 import com.miw.farmersborrowbench.beans.Account;
 import com.miw.farmersborrowbench.beans.Login;
+import com.miw.farmersborrowbench.beans.MoneyTransaction;
 import com.miw.farmersborrowbench.beans.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
+import com.miw.farmersborrowbench.repositories.MoneyTransactionRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -23,6 +25,9 @@ public class AccountOverviewController {
     @Autowired
     AccountRepository accountRepository;
 
+    @Autowired
+    MoneyTransactionRepository moneyTransactionRepository;
+
     @PostMapping("/accountOverview")
     public String getAccountOverview() {
 
@@ -32,6 +37,9 @@ public class AccountOverviewController {
     @GetMapping("/goToAccountTransactions")
     public String goToAccountTransactions(@RequestParam("accountNumber") String accountNumber, Model model) {
         Account account = accountRepository.findAccountByAccountNumber(accountNumber);
+        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByCreditAccountAccountNumber(account.getAccountNumber());
+
+        model.addAttribute("moneyTransactions", moneyTransactions);
         model.addAttribute("account", account);
         return "accountTransactions";
     }
