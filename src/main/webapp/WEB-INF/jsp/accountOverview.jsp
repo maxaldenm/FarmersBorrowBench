@@ -22,7 +22,7 @@
         <h4 class="logoText">Farmer's Borrow Bench</h4>
     </div>
     <ul class="nav-links">
-        <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToHomeLoggedIn">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/goToContact">Contact</a></li>
         <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
     </ul>
@@ -55,31 +55,18 @@
     <!-- <c:if test="${!empty(sessionScope.user.accounts)}"> -->
     <!-- <c:forEach var="account" items="${sessionScope.user.accounts}"> -->
     <div class="fadeInOne">
-
         <div class="account">
-
             <div class="accountOneInfoBar">
                 <h5 class="userAccountOneIban">IBAN:</h5>
                 <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
                 <h5 class="userAccountOnebalance">balance: </h5>
                 <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
             </div><!-- accountOneInfoBar -->
-            <div class="accountOneTransactionView">
-                <div class="transaction">transaction1</div>
-                <div class="transaction">transaction2</div>
-                <div class="transaction">transaction3</div>
-                <div class="transaction">transaction4</div>
-                <div class="transaction">transaction5</div>
-                <div class="transaction">transaction6</div>
-                <div class="transaction">transaction7</div>
-            </div><!-- accountOneTransactionView -->
             <div class="selectionBar">
                 <a class="myButton"
                    href="${pageContext.request.contextPath}/goToAccountTransactions?accountNumber=${account.accountNumber}">Select</a>
             </div>
-
-        </div>
-        <!-- account -->
+        </div><!-- account -->
         <!--</c:forEach>-->
     </div><!-- fadeInOne -->
     <!-- </c:if> -->

@@ -49,19 +49,33 @@
                 <form:input path="bsn" type="text"/><form:errors path="bsn" cssClass="error"/><br>
 
                 <label for="fname"><h3>First name:</h3></label>
-                <form:input path="fname" type="text"/><br>
+                <form:input path="fname" type="text"/><form:errors path="fname" cssClass="error"/><br>
 
                 <label for="suffix"><h3>suffix:</h3></label>
                 <form:input path="suffix" type="text"/><br>
 
                 <label for="lname"><h3>Last name:</h3></label>
-                <form:input path="lname" type="text"/><br>
+                <form:input path="lname" type="text"/><form:errors path="lname" cssClass="error"/><br>
+
+                <label for="postcode"><h3>Postcode: </h3></label>
+                <form:input path="postcode" type="text"/><form:errors path="postcode" cssClass="error"/><br>
+
+                <label for="city"><h3>City:</h3></label>
+                <form:input path="city" type="text"/><form:errors path="city" cssClass="error"/><br>
+
+                <label for="streetname"><h3>Streetname:</h3></label>
+                <form:input path="streetname" type="text"/><form:errors path="streetname" cssClass="error"/><br>
+
+                <label for="houseNr"><h3>HouseNumber:</h3></label>
+                <form:input path="houseNr" type="text"/><form:errors path="houseNr" cssClass="error"/><br>
 
                 <label><h3>MKB:</h3></label>
-                <form:checkbox path="MKB"/><br>
 
-                <label for="sector"><h3>Sector:</h3></label>
-                <form:select path="sector" items="${sectorItems}"/><br>
+                <input type="checkbox" class="trigger" value="MKB"/>
+                <div class="showMkb">
+                    <label for="sector"><h3>Sector:</h3></label>
+                    <form:select path="sector" items="${sectorItems}"/><br>
+                </div>
 
 
                 <div class="buttons">

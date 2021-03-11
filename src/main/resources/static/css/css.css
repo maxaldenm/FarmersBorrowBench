@@ -17,7 +17,7 @@ body {
 .form-container {
     width: 90%;
     height: auto;
-    overflow: hidden;
+    overflow-y: auto;
     background-color: dimgray;
     margin: auto;
     padding: 10px;
@@ -36,6 +36,19 @@ label {
     display: inline-block;
     width: 20%;
     text-align: right;
+}
+
+.error {
+    color: red;
+    display: inline-block;
+}
+
+.showMkb {
+    display: none;
+}
+
+.trigger:checked+.showMkb {
+    display: flex;
 }
 
 .form-container .buttons {
@@ -81,6 +94,7 @@ label {
     width: 120px;
     border-bottom: #333333 1px solid;
     height: 25px;
+
 }
 
 .userachternaaminfo {
@@ -162,14 +176,13 @@ main {
 }
 
 .ascii-art {
+    all:unset;
     color: green;
-
-    white-space: pre;
 }
 
 
 .video {
-    text-align:center !important;
+    text-align: center !important;
 }
 
 .fadeInOne {
@@ -387,26 +400,27 @@ nav {
     display: grid;
     grid-template-columns: 0.3fr 1.5fr 0.3fr 0.7fr;
     width: auto;
-    height: 36px;
+    height: 50px;
     top: 0;
+    border: #f7971e 1px solid;
 }
 
 .userAccountOneIban {
     grid-column: 1/2;
     padding: 4px;
-    text-align: center;
+    text-align: right;
 }
 
 .userAccountOneIbanInfo {
     grid-column: 2/3;
-    padding: 4px;
-    text-align: center;
+    text-align: left;
+    padding: 4px 4px 4px 20px;
 }
 
 .userAccountOnebalance {
     grid-column: 3/4;
     padding: 4px;
-    text-align: center;
+    text-align: right;
 }
 
 .userAccountOnebalanceInfo:before {
@@ -416,7 +430,7 @@ nav {
 .userAccountOnebalanceInfo {
     grid-column: 4/5;
     padding: 4px 12px 4px 4px;
-    text-align: right;
+    text-align: center;
 }
 
 .accountOneTransactionView {
@@ -458,6 +472,107 @@ nav {
 .selectionBar a {
     margin-right: 24px;
 }
+
+.thisAccount {
+    width: 100%;
+    background-color: whitesmoke;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    overflow-y: hidden;
+    margin-top: 24px;
+}
+
+.thisAccountInfoBar {
+    position: relative;
+    background-color: #242424;
+    color: #f7971e;
+    display: grid;
+    grid-template-columns: 0.3fr 1.5fr 0.3fr 0.7fr;
+    width: auto;
+    height: 40px;
+    top: 0;
+    border: #f7971e 1px solid;
+}
+
+.thisTransactionInfoBar {
+    position: relative;
+    background-color: #242424;
+    color: #f7971e;
+    display: grid;
+    grid-template-columns: 0.1fr 0.5fr 2fr 0.1fr 1fr;
+    width: auto;
+    height: 36px;
+    top: 0;
+}
+
+.thisAccountTransactionView {
+    margin: 0;
+    height: 50vh;
+    position: relative;
+    top: 0;
+    overflow-y: auto;
+}
+
+/*
+.thisAccountTransactionView::-webkit-scrollbar {
+    width: 20px;
+    display: block;
+    height: 100%;
+}
+
+.thisAccountTransactionView::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #f7971e, #b36401);
+}
+
+.thisAccountTransactionView::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, black, #434343);
+    border-radius: 2px;
+    border: 2px solid #f7971e;
+}
+*/
+
+.transactionEven {
+    display: grid;
+    grid-template-columns: 0.1fr 0.5fr 2fr 0.1fr 1fr;
+    grid-template-rows: 40px;
+    border-bottom: #242424 1px solid;
+    background-color: lightgray;
+}
+
+.transactionOdd {
+    display: grid;
+    grid-template-columns: 0.1fr 0.5fr 2fr 0.1fr 1fr;
+    grid-template-rows: 40px;
+    border-bottom: #242424 1px solid;
+    background-color: darkgrey;
+}
+
+.creditAccount {
+    grid-column: 2/3;
+    border-right: black 1px solid;
+    text-align: center;
+}
+
+.transferDescription {
+    grid-column: 3/4;
+    border-right: black 1px solid;
+    text-align: left;
+    padding-left: 24px;
+}
+
+.transferAmount {
+    grid-column: 5/6;
+    border-right: black 1px solid;
+    text-align: left;
+    padding-left: 24px;
+}
+
+.transferAmount:before {
+    content: '\20AC';
+}
+
+
 
 
 

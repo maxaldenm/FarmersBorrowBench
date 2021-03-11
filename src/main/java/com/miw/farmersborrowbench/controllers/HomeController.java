@@ -3,6 +3,8 @@ package com.miw.farmersborrowbench.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class HomeController {
 
@@ -29,7 +31,6 @@ public class HomeController {
         System.out.println("go to register");
         return "accountOverview";
     }
-
 
 
 }
