@@ -24,7 +24,7 @@
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/goToRegisterNewUser">Register</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToContact">Contact</a></li>
         <li><a href="${pageContext.request.contextPath}/goToLogin">Login</a></li>
         <li><a href="${pageContext.request.contextPath}/about">About</a></li>
     </ul>

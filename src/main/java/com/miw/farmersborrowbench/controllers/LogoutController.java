@@ -8,10 +8,10 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LogoutController {
 
-    @GetMapping("/logout")
+    @GetMapping("/goToLogout")
     public String logout(HttpSession session){
         System.out.println("Ending user session");
         session.invalidate();
-        return "login";
+        return "logout";
     }
 }

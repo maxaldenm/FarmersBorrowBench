@@ -68,8 +68,7 @@ public class RegisterNewUserController {
             //bestaat wel
         }
 
-        model.addAttribute("user", user);
-        return "accountDetails";
+        return "login";
     }
 }
 

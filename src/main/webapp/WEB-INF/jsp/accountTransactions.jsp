@@ -23,9 +23,9 @@
     </div>
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToRegisterNewUser">Register</a></li>
         <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToLogin">Login</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToContact">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
         <li><a href="${pageContext.request.contextPath}/about">About</a></li>
     </ul>
     <div class="burger">
@@ -47,7 +47,7 @@
                 <h5 class="userAccountOnebalance">balance: </h5>
                 <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
             </div><!-- accountOneInfoBar -->
-            <div class="accountOneTransactionView">
+            <div class="thisAccountTransactionView">
                 <div class="transaction">transaction1</div>
                 <div class="transaction">transaction2</div>
                 <div class="transaction">transaction3</div>
@@ -57,7 +57,7 @@
                 <div class="transaction">transaction7</div>
             </div><!-- accountOneTransactionView -->
             <div class="selectionBar">
-                <a href="accountDetails" class="myButton">Select</a>
+                <a href="transaction" class="myButton">Transaction</a>
             </div>
         </div>
         <!-- account -->

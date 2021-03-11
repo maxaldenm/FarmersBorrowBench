@@ -23,9 +23,9 @@
     </div>
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToRegisterNewUser">Register</a></li>
         <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToLogin">Login</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToContact">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
         <li><a href="${pageContext.request.contextPath}/about">About</a></li>
     </ul>
     <div class="burger">
@@ -38,7 +38,7 @@
     <div class="fadeInOne">
 
         <div class="accountDetails">
-            <h3>Register New User:</h3>
+            <h3>Account Details:</h3>
             <br>
             <h5 class="userfnaam">Username:</h5>
             <H3 class="userfnaaminfo">${user.username}</H3><br>
