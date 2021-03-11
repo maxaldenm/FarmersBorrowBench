@@ -22,10 +22,10 @@
         <h4 class="logoText">Farmer's Borrow Bench</h4>
     </div>
     <ul class="nav-links">
-        <li><a href="home">Home</a></li>
-        <li><a href="registerNewUser">Register</a></li>
-        <li><a href="accountOverview">Account</a></li>
-        <li><a href="login">Login</a></li>
+        <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToRegisterNewUser">Register</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToLogin">Login</a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>
@@ -36,11 +36,13 @@
 
 <main>
     <h2>Account Overview</h2>
-<c:if test="${!empty(user.accounts)}">
-    <c:forEach var="account" items="${user.accounts}">
+    <em>Welcome ${sessionScope.user.fname} ${sessionScope.user.getsuffix()} ${sessionScope.user.lname}</em>
+<!-- <c:if test="${!empty(sessionScope.user.accounts)}"> -->
+    <!-- <c:forEach var="account" items="${sessionScope.user.accounts}"> -->
         <div class="fadeInOne">
 
         <div class="account">
+
             <div class="accountOneInfoBar">
                 <h5 class="userAccountOneIban">IBAN:</h5>
                 <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
@@ -57,13 +59,14 @@
                 <div class="transaction">transaction7</div>
             </div><!-- accountOneTransactionView -->
             <div class="selectionBar">
-                <a href="accountDetails" class="myButton">Select</a>
+                <a class="myButton" href="${pageContext.request.contextPath}/goToAccountTransactions?accountNumber=${account.accountNumber}">Select</a>
             </div>
+
         </div>
         <!-- account -->
-    </c:forEach>
+    <!--</c:forEach>-->
     </div><!-- fadeInOne -->
-</c:if>
+<!-- </c:if> -->
     </main>
 
     <script src="${pageContext.request.contextPath}/js/app.js"></script>

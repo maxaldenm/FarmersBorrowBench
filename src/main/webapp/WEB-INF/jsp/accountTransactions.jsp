@@ -33,24 +33,39 @@
         <div class="line3"></div>
     </div>
 </nav>
+
 <main>
+    <h2>Account Transactions</h2>
+
     <div class="fadeInOne">
 
-        <div class="accountDetails">
-            <h3>Register New User:</h3>
-            <br>
-            <h5 class="userfnaam">Username:</h5>
-            <H3 class="userfnaaminfo">${user.username}</H3><br>
-            <h5 class="usersuffix">Password:</h5>
-            <H3 class="usersuffixinfo">${user.password}</H3><br>
-            <h5 class="bsntext">BSN:</h5>
-            <H3 class="bsnuserinfo">${user.bsn}</H3><br>
-            <h5 class="accountaccountNumber">IBAN:</h5>
-            <h3 class="accountaccountNumberïnfo">${user.accounts.get(0).accountNumber}</h3><br>
-        </div><!-- accountDetails -->
+        <div class="account">
+            <div class="accountOneInfoBar">
+                <h5 class="userAccountOneIban">IBAN:</h5>
+                <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
+                <h5 class="userAccountOnebalance">balance: </h5>
+                <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
+            </div><!-- accountOneInfoBar -->
+            <div class="accountOneTransactionView">
+                <div class="transaction">transaction1</div>
+                <div class="transaction">transaction2</div>
+                <div class="transaction">transaction3</div>
+                <div class="transaction">transaction4</div>
+                <div class="transaction">transaction5</div>
+                <div class="transaction">transaction6</div>
+                <div class="transaction">transaction7</div>
+            </div><!-- accountOneTransactionView -->
+            <div class="selectionBar">
+                <a href="accountDetails" class="myButton">Select</a>
+            </div>
+        </div>
+        <!-- account -->
+
     </div><!-- fadeInOne -->
+
 </main>
 
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
 </body>
 </html>
+

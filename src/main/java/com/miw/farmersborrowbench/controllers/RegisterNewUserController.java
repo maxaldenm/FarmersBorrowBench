@@ -28,13 +28,6 @@ public class RegisterNewUserController {
     AccountRepository accountRepository;
 
 
-    @GetMapping("/registerNewUser")
-
-    public String goToRegisterNewUser() {
-        System.out.println("go to open Account");
-        return "registerNewUser";
-    }
-
     @PostMapping("/registerNewUser")
     public String processtSubmitregisterNewUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
         System.out.println("submit New User");

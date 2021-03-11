@@ -26,4 +26,9 @@ public class DefaultModelAttributeController {
     public Login getDefaultLogin() {
         return new Login();
     }
+
+    @ModelAttribute("account")
+    public Account getDefaultAccount() {
+        return new Account();
+    }
 }

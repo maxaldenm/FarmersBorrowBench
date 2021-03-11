@@ -18,10 +18,10 @@
         <h4>Farmer's Borrow Bench</h4>
     </div>
     <ul class="nav-links">
-        <li><a href="home">Home</a></li>
-        <li><a href="registerNewUser">Register</a></li>
-        <li><a href="accountOverview">accountOverview</a></li>
-        <li><a href="login">Login</a></li>
+        <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToRegisterNewUser">Register</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToLogin">Login</a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>

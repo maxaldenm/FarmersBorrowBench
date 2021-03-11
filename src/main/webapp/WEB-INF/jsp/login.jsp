@@ -22,10 +22,10 @@
         <h4 class="logoText">Farmer's Borrow Bench</h4>
     </div>
     <ul class="nav-links">
-        <li><a href="home">Home</a></li>
-        <li><a href="registerNewUser">Register</a></li>
-        <li><a href="accountOverview">Account</a></li>
-        <li><a href="login">Login</a></li>
+        <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToRegisterNewUser">Register</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToLogin">Login</a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>
@@ -37,7 +37,7 @@
     <h2>Login</h2>
     <div class="fadeInOne">
         <div class="form-container">
-            <h3>Login:</h3>
+
             <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
             <form:form action="/login" method="post" modelAttribute="login">
 
