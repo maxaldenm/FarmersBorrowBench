@@ -22,7 +22,7 @@
         <h4 class="logoText">Farmer's Borrow Bench</h4>
     </div>
     <ul class="nav-links">
-        <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToHomeLoggedIn">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
         <li><a href="${pageContext.request.contextPath}/goToContact">Contact</a></li>
         <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
@@ -40,24 +40,220 @@
 
     <div class="fadeInOne">
 
-        <div class="account">
-            <div class="accountOneInfoBar">
+        <div class="thisAccount">
+            <div class="thisAccountInfoBar">
                 <h5 class="userAccountOneIban">IBAN:</h5>
                 <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
                 <h5 class="userAccountOnebalance">balance: </h5>
                 <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
             </div><!-- accountOneInfoBar -->
+            <div class="thisTransactionInfoBar">
+                <h5 class="creditAccount">credit account</h5>
+                <h5 class="transferDescription">transfer Description</h5>
+                <h5 class="transferAmount">Amount</h5>
+            </div><!-- thisTransactionInfoBar -->
             <div class="thisAccountTransactionView">
-                <div class="transaction">transaction1</div>
-                <div class="transaction">transaction2</div>
-                <div class="transaction">transaction3</div>
-                <div class="transaction">transaction4</div>
-                <div class="transaction">transaction5</div>
-                <div class="transaction">transaction6</div>
-                <div class="transaction">transaction7</div>
+                <div class="transactionEven">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionOdd">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionEven">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionOdd">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionEven">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionOdd">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionEven">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionOdd">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionEven">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionOdd">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionEven">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionOdd">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionEven">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionOdd">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionEven">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionOdd">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionEven">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
+                <div class="transactionOdd">
+                    <div class="creditAccount">
+                        IBAN Credit account
+                    </div>
+                    <div class="transferDescription">
+                        Transfer Description
+                    </div>
+                    <div class="transferAmount">
+                        Amount
+                    </div>
+                </div><!-- transaction -->
             </div><!-- accountOneTransactionView -->
             <div class="selectionBar">
-                <a href="transaction" class="myButton">Transaction</a>
+                <a href="${pageContext.request.contextPath}/moneyTransaction" class="myButton">Transaction</a>
             </div>
         </div>
         <!-- account -->
