@@ -22,14 +22,22 @@ public class User {
 
     @Size(min = 9, max = 9, message = "{bsn.size}")
     private String bsn;
+    @NotEmpty(message = "{not.empty}")
     @Pattern(regexp = "[a-zA-Z-]", message = "{name.invalid}")
-    @NotEmpty()
     private String fname;
     private String suffix;
+    @NotEmpty(message = "{not.empty}")
     @Pattern(regexp = "[a-zA-Z-]", message = "{name.invalid}")
-    @NotEmpty()
     private String lname;
-
+    @NotEmpty(message = "{not.empty}")
+    private String postcode;
+    @NotEmpty(message = "{not.empty}")
+    private String city;
+    @NotEmpty(message = "{not.empty}")
+    private String streetname;
+    @NotEmpty(message = "{not.empty}")
+    @Pattern(regexp = "[0,9]", message = "{houseNr.invalid}")
+    private String houseNr;
 
     private boolean MKB;
 
@@ -39,6 +47,9 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable
     private List<Account> accounts = new ArrayList<>();
+
+    public User() {
+    }
 
     public int getId() {
         return id;
@@ -122,6 +133,38 @@ public class User {
 
     public void setSector(Sector sector) {
         this.sector = sector;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreetname() {
+        return streetname;
+    }
+
+    public void setStreetname(String straatnaam) {
+        this.streetname = straatnaam;
+    }
+
+    public String getHouseNr() {
+        return houseNr;
+    }
+
+    public void setHouseNr(String huisNr) {
+        this.houseNr = huisNr;
     }
 
 
