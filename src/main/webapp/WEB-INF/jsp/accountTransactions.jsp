@@ -253,7 +253,7 @@
                 </div><!-- transaction -->
             </div><!-- accountOneTransactionView -->
             <div class="selectionBar">
-                <a href="${pageContext.request.contextPath}/moneyTransaction" class="myButton">Transaction</a>
+                <a href="/goToMoneyTransaction?accountNumber=${account.accountNumber}" class="myButton">Transaction</a>
             </div>
         </div>
         <!-- account -->
