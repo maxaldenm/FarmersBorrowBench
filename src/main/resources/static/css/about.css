@@ -1,0 +1,353 @@
+body {
+    height: 100vh;
+    background: linear-gradient(to right bottom, #565656, whitesmoke);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+main {
+    width: 90%;
+    padding: 10px;
+    /* background: linear-gradient(to left bottom, #373737, #484848); */
+    background-color: black;
+    background-image: radial-gradient(
+            rgba(0, 150, 0, 0.75), black 80%
+    );
+    backdrop-filter: blur(3em);
+    color: black;
+    position: relative;
+    margin: auto;
+    top: 10vh;
+    overflow: hidden;
+}
+
+.contentOne {
+    width: 60%;
+    margin: auto auto 2vh;
+    text-align: justify-all;
+}
+
+.ascii-container {
+    width: 90vw;
+    height: 30vmax;
+    margin: auto;
+    padding: 10px;
+    color: green;
+
+}
+
+.ascii-art1 {
+    width: 20vmax;
+    height: 20vmax;
+    float: left;
+    margin: auto;
+
+    font-stretch: expanded;
+    font-family: normal;
+    font-weight: 900;
+}
+
+.ascii-art2 {
+    margin: auto auto auto 50%;
+    height: 20vmax;
+}
+
+
+.video {
+    text-align:center !important;
+}
+
+.fadeInOne {
+    font-family: 'Roboto Slab', serif;
+    animation: fadeIn ease 4s;
+    -webkit-animation: fadeIn ease 4s;
+    -moz-animation: fadeIn ease 4s;
+    -o-animation: fadeIn ease 4s;
+}
+
+.fadeInTwo {
+    animation: fadeIn ease 6s;
+    -webkit-animation: fadeIn ease 6s;
+    -moz-animation: fadeIn ease 6s;
+    -o-animation: fadeIn ease 6s;
+}
+
+.fadeInThree {
+    animation: fadeIn ease 8s;
+    -webkit-animation: fadeIn ease 8s;
+    -moz-animation: fadeIn ease 8s;
+    -o-animation: fadeIn ease 8s;
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background: linear-gradient(to left top, #242424, #343434);
+    z-index: +1;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logoImg {
+    height: 60px;
+    padding: 5px;
+    display: inline-block;
+}
+
+.logoText {
+    font-family: 'Roboto Slab', serif;
+    color: #f7971e;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 24px;
+    display: inline-block;
+
+}
+
+.nav-links {
+    font-family: 'Roboto Slab', serif;
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    color: whitesmoke;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.burger {
+    font-family: 'Roboto Slab', serif;
+    display: none;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #f7971e;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+
+    input {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    input {
+        width: 50%;
+    }
+
+    .nav-links {
+        position: fixed;
+        right: 0;
+        height: 92vh;
+        top: 8vh;
+        background-color: #343434;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li {
+        opacity: 0;
+    }
+
+    .burger {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+.nav-active {
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.account {
+    width: 100%;
+    background-color: whitesmoke;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    overflow-y: hidden;
+    margin-top: 24px;
+}
+
+.accountOneInfoBar {
+    position: relative;
+    background-color: #242424;
+    color: #f7971e;
+    display: grid;
+    grid-template-columns: 0.3fr 1.5fr 0.3fr 0.7fr;
+    width: auto;
+    height: 36px;
+    top: 0;
+}
+
+.userAccountOneIban {
+    grid-column: 1/2;
+    padding: 4px;
+    text-align: center;
+}
+
+.userAccountOneIbanInfo {
+    grid-column: 2/3;
+    padding: 4px;
+    text-align: center;
+}
+
+.userAccountOnebalance {
+    grid-column: 3/4;
+    padding: 4px;
+    text-align: center;
+}
+
+.userAccountOnebalanceInfo:before {
+    content: '\20AC';
+}
+
+.userAccountOnebalanceInfo {
+    grid-column: 4/5;
+    padding: 4px 12px 4px 4px;
+    text-align: right;
+}
+
+.accountOneTransactionView {
+    margin: 0;
+    height: 11vh;
+    position: relative;
+    top: 0;
+    overflow-y: auto;
+
+}
+
+.accountOneTransactionView::-webkit-scrollbar {
+    width: 20px;
+    display: block;
+    height: 100%;
+}
+
+.accountOneTransactionView::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #f7971e, #b36401);
+}
+
+.accountOneTransactionView::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, black, #434343);
+    border-radius: 2px;
+    border: 2px solid #f7971e;
+}
+
+.selectionBar {
+    width: 100%;
+    position: relative;
+    height: 36px;
+    top: 0;
+    display: flex;
+    float: right;
+    align-items: center;
+    background-color: #242424;
+}
+
+.selectionBar a {
+    margin-right: 24px;
+}
+

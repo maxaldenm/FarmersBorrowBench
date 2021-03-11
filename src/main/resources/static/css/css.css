@@ -176,9 +176,8 @@ main {
 }
 
 .ascii-art {
+    all:unset;
     color: green;
-
-    white-space: pre;
 }
 
 
