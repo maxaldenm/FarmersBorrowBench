@@ -34,22 +34,36 @@
         <div class="line3"></div>
     </div>
 </nav>
+
 <main>
     <div class="fadeInOne">
+        <h2>About Farmer's Borrow Bench</h2>
+        <div class="ascii-art">
 
-        <div class="accountDetails">
-            <h3>Register New User:</h3>
-            <br>
-            <h5 class="userfnaam">Username:</h5>
-            <H3 class="userfnaaminfo">${user.username}</H3><br>
-            <h5 class="usersuffix">Password:</h5>
-            <H3 class="usersuffixinfo">${user.password}</H3><br>
-            <h5 class="bsntext">BSN:</h5>
-            <H3 class="bsnuserinfo">${user.bsn}</H3><br>
-            <h5 class="accountaccountNumber">IBAN:</h5>
-            <h3 class="accountaccountNumberïnfo">${user.accounts.get(0).accountNumber}</h3><br>
-        </div><!-- accountDetails -->
+            _____                              _
+            |  ___|_ _ _ __ _ __ ___   ___ _ __( )___
+            | |_ / _` | '__| '_ ` _ \ / _ \ '__|// __|
+            |  _| (_| | |  | | | | | |  __/ |    \__ \
+            |_|__\__,_|_|  |_| |_| |_|\___|_|    |___/
+            | __ )  ___  _ __ _ __ _____      __
+            |  _ \ / _ \| '__| '__/ _ \ \ /\ / /
+            | |_) | (_) | |  | | | (_) \ V  V /
+            |____/ \___/|_|  |_|  \___/ \_/\_/
+            | __ )  ___ _ __   ___| |__
+            |  _ \ / _ \ '_ \ / __| '_ \
+            | |_) |  __/ | | | (__| | | |
+            |____/ \___|_| |_|\___|_| |_|
+
+        </div><!-- content -->
     </div><!-- fadeInOne -->
+    <div style="text-align: center;">
+        <video width="640" height="480" controls>
+            <source src="${pageContext.request.contextPath}/video/fbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+
 </main>
 
 <script src="${pageContext.request.contextPath}/js/app.js"></script>

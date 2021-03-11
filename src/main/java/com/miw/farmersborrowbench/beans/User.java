@@ -1,6 +1,8 @@
 package com.miw.farmersborrowbench.beans;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +14,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Size(min = 3, message = "size.longer.than.2")
+    @Size(min = 3, message = "{name.size}")
     private String username;
-    @Size(min = 3, message = "size.longer.than.2")
+    @Size(min = 3, message = "{password.size}")
     private String password;
     //todo password opslaan als hashcode
 
-    @Size(min = 3, message = "size.longer.than.2")
+    @Size(min = 9, max = 9, message = "{bsn.size}")
     private String bsn;
+    @Pattern(regexp = "[a-zA-Z-]", message = "{name.invalid}")
+    @NotEmpty()
     private String fname;
     private String suffix;
+    @Pattern(regexp = "[a-zA-Z-]", message = "{name.invalid}")
+    @NotEmpty()
     private String lname;
 
 
