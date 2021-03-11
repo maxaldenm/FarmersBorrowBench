@@ -22,6 +22,7 @@
         <li><a href="${pageContext.request.contextPath}/goToRegisterNewUser">Register</a></li>
         <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
         <li><a href="${pageContext.request.contextPath}/goToLogin">Login</a></li>
+        <li><a href="${pageContext.request.contextPath}/about">About</a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>

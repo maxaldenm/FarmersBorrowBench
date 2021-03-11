@@ -161,6 +161,16 @@ main {
     text-align: justify-all;
 }
 
+.ascii-art {
+    color: green;
+
+    white-space: pre;
+}
+
+
+.video {
+    text-align:center !important;
+}
 
 .fadeInOne {
     animation: fadeIn ease 4s;

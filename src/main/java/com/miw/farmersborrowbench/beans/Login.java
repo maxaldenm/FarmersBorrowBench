@@ -4,9 +4,9 @@ import javax.validation.constraints.NotEmpty;
 
 public class Login {
 
-    @NotEmpty(message = "Enter username")
+    @NotEmpty(message = "{name.empty}")
     private String username;
-    @NotEmpty(message = "Enter password")
+    @NotEmpty(message = "{password.empty}")
     private String password;
 
     public String getUsername() {
