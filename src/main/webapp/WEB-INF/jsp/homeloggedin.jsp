@@ -22,7 +22,7 @@
         <h4 class="logoText">Farmer's Borrow Bench</h4>
     </div>
     <ul class="nav-links">
-        <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToHomeLoggedIn">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
         <li><a href="${pageContext.request.contextPath}/goToContactLoggedIn">Contact</a></li>
         <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
@@ -36,43 +36,70 @@
 </nav>
 
 <main>
-    <div class="fadeInOne">
-        <h2>Welkom bij Farmer's Borrow Bench</h2>
-        <div class="contentOne">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Adipisci at autem ea laboriosam laborum maxime minus pariatur
-                quibusdam repellat, saepe tempora tempore totam ullam, voluptatibus.</p>
-        </div><!-- content -->
-    </div><!-- fadeInOne -->
-    <div class="fadeInTwo">
-        <h3>Onze service</h3>
-        <div class="contentOne">
-            <p>ipsum dolor sit amet, consectetur adipisicing elit. Asperiores culpa deserunt dicta
-                eaque eius, fuga hic molestiae molestias, nesciunt odit officia quaerat qui quis
-                sapiente soluta sunt suscipit tempora velit?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur,
-                cupiditate deleniti dolor dolorum error iure, molestias natus, nostrum obcaecati pariatur
-                placeat quibusdam repellat. Est laudantium, ut? Accusantium, delectus dolorem, dolores
-                enim est exercitationem facilis fuga id, molestias nam quibusdam rerum sit ullam. Aliquid
-                aut culpa cum dignissimos ea, fuga itaque magni minima molestiae neque numquam odio quasi
-                quis voluptatibus.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Enim et facilis molestiae quidem similique tempore.</p>
-        </div><!-- contentTwo -->
-    </div><!-- fadeInTwo -->
-    <div class="fadeInThree">
-        <h3>Geschiedenis</h3>
-        <div class="contentOne">
-            <p>ipsum dolor sit amet, consectetur adipisicing elit. Asperiores culpa deserunt dicta
-                eaque eius, fuga hic molestiae molestias, nesciunt odit officia quaerat qui quis
-                sapiente soluta sunt suscipit tempora velit?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Enim et facilis molestiae quidem similique tempore.</p>
-        </div><!-- contentTwo -->
-    </div><!-- fadeInThree -->
+    <div class="container">
+        <div class="fadeInOne">
+            <div class="contentHomeOne">
+                <div class="intro">
+                    <h1>We are the Farmer's Borrow Bench</h1><br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis corporis debitis dolor
+                        doloremque ducimus eligendi eum eveniet illo illum incidunt iste, magnam molestiae nostrum
+                        numquam
+                        perspiciatis placeat quae quibusdam, quisquam quod quos rem sequi, temporibus tenetur unde vitae
+                        voluptate voluptatibus. Blanditiis deleniti doloremque ea earum ex excepturi itaque, nesciunt
+                        odit
+                        optio porro quidem quisquam reprehenderit sit tempora ullam unde ut.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam asperiores aspernatur
+                        beatae
+                        dicta distinctio dolorem et facilis, laborum modi mollitia natus necessitatibus, non officiis
+                        rem!
+                        Inventore omnis repudiandae voluptate.</p>
+                </div>
+                <div class="orangediv">
+                    <h5><em>Your mum:</em></h5>
+                    <h3>"Het is een hele fijne bank hoor!"</h3>
+                </div>
+                <div class="blog">
+                    <h1>Follow our <br>BLOG</h1>
+                </div>
+                <div class="testimonials">
 
+                </div>
+                <div class="blackdiv"></div>
+
+            </div><!-- content -->
+        </div><!-- fadeInOne -->
+        <div class="fadeInTwo">
+            <div class="contentHomeTwo">
+                <h1>Onze service</h1>
+                <p>ipsum dolor sit amet, consectetur adipisicing elit. Asperiores culpa deserunt dicta
+                    eaque eius, fuga hic molestiae molestias, nesciunt odit officia quaerat qui quis
+                    sapiente soluta sunt suscipit tempora velit?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur,
+                    cupiditate deleniti dolor dolorum error iure, molestias natus, nostrum obcaecati pariatur
+                    placeat quibusdam repellat. Est laudantium, ut? Accusantium, delectus dolorem, dolores
+                    enim est exercitationem facilis fuga id, molestias nam quibusdam rerum sit ullam. Aliquid
+                    aut culpa cum dignissimos ea, fuga itaque magni minima molestiae neque numquam odio quasi
+                    quis voluptatibus.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim et facilis molestiae quidem similique tempore.</p>
+            </div><!-- contentTwo -->
+        </div><!-- fadeInTwo -->
+        <div class="fadeInThree">
+
+            <div class="contentHomeThree">
+                <h1>Geschiedenis</h1>
+                <p>ipsum dolor sit amet, consectetur adipisicing elit. Asperiores culpa deserunt dicta
+                    eaque eius, fuga hic molestiae molestias, nesciunt odit officia quaerat qui quis
+                    sapiente soluta sunt suscipit tempora velit?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim et facilis molestiae quidem similique tempore.</p>
+            </div><!-- contentTwo -->
+        </div><!-- fadeInThree -->
+    </div>
 </main>
-
+<div class="botbar">
+    <h3>Nou Dooooooeeeeeeeeeeeeiiiiiiiii!!</h3>
+</div>
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
 </body>
 </html>

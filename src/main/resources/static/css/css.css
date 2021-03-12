@@ -47,7 +47,7 @@ label {
     display: none;
 }
 
-.trigger:checked+.showMkb {
+.trigger:checked + .showMkb {
     display: flex;
 }
 
@@ -166,7 +166,7 @@ main {
     margin: auto;
     top: 10vh;
     overflow: hidden;
-    height: 80vh;
+    height: 80%;
 }
 
 .contentOne {
@@ -176,7 +176,7 @@ main {
 }
 
 .ascii-art {
-    all:unset;
+    all: unset;
     color: green;
 }
 
@@ -571,6 +571,111 @@ nav {
 .transferAmount:before {
     content: '\20AC';
 }
+
+.contentHomeOne {
+    height: 60vh;
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    background-image: linear-gradient(to bottom, rgba(14, 14, 14, 1), rgba(36, 36, 36, 0.2)), url("/images/OogstenBochtBoven.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 3vh auto;
+}
+
+.intro {
+    grid-column: 1/3;
+    grid-row: 1/3;
+    color: darkgrey;
+    align-self: center;
+    text-align: left;
+    text-justify: distribute;
+    display: block;
+    padding: 20px;
+}
+
+.intro p {
+    margin-bottom: 10px;
+}
+
+.orangediv {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    background-color: #f7971e;
+    color: black;
+    text-align: center;
+    display: inline-block;
+    padding: 20px
+}
+
+.orangediv h3::before {
+    content: "\A";
+}
+
+.testimonials {
+    grid-column: 3/5;
+    grid-row: 2/3;
+    color: lightgray;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+}
+
+.testimonials p::before {
+    content: "\A";
+}
+
+.blackdiv {
+    grid-column: 1/2;
+    grid-row: 3/4;
+    background-color: black;
+    color: #f7971e;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.blog {
+    grid-column: 4/5;
+    grid-row: 3/4;
+    color: lightgray;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.container {
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.contentHomeTwo {
+    height: 60vh;
+    width: 95%;
+    margin: 3vh auto;
+    background-image: linear-gradient(to bottom, rgba(14, 14, 14, 1), rgba(36, 36, 36, 0.2)), url("/images/OogstenRechtBoven.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: lightgray;
+    padding: 20px;
+}
+
+.contentHomeThree {
+    height: 60vh;
+    width: 95%;
+    background-image: linear-gradient(to bottom, rgba(14, 14, 14, 1), rgba(36, 36, 36, 0.2)), url("/images/OogstenSchuinBoven.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 3vh auto;
+    color: lightgray;
+    padding: 20px;
+}
+
+
+
+
 
 
 

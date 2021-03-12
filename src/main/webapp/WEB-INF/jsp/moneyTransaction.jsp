@@ -10,12 +10,16 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/css.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <title>Register New User</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+    <title>accountOverview</title>
 </head>
 <body>
 <nav>
     <div class="logo">
-        <h4>Farmer's Borrow Bench</h4>
+        <a href="home">
+            <img class="logoImg" src="${pageContext.request.contextPath}/images/FBBLogo.jpg" alt="LOGO">
+        </a>
+        <h4 class="logoText">Farmer's Borrow Bench</h4>
     </div>
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/goToHomeLoggedIn">Home</a></li>
@@ -31,29 +35,31 @@
     </div>
 </nav>
 
-<div class="fadeInOne">
-    <div class="form-container">
-        <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
-        <form:form action="/moneyTransaction" method="post" modelAttribute="moneytransactionform">
+<main>
+    <h2>Transaction</h2>
+    <div class="fadeInOne">
+        <div class="form-container">
+            <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
+            <form:form action="/moneyTransaction" method="post" modelAttribute="moneytransactionform">
 
-            <label for="amount"><h3>Amount:</h3></label>
-            <form:input path="amount" type="text"/><form:errors path="amount" cssClass="error"/><br>
+                <label for="amount"><h3>Amount:</h3></label>
+                <form:input path="amount" type="text"/><form:errors path="amount" cssClass="error"/><br>
 
-            <label for="description"><h3>Description:</h3></label>
-            <form:input path="description"/><form:errors path="description" cssClass="error"/><br>
+                <label for="description"><h3>Description:</h3></label>
+                <form:input path="description"/><form:errors path="description" cssClass="error"/><br>
 
-            <label for="debitIban"><h3>IBAN receiver:</h3></label>
-            <form:input path="debitIban" type="text"/><form:errors path="debitIban" cssClass="error"/><br>
-            <form:hidden path="creditIban" value="${accountNumber}"/>
+                <label for="debitIban"><h3>IBAN receiver:</h3></label>
+                <form:input path="debitIban" type="text"/><form:errors path="debitIban" cssClass="error"/><br>
+                <form:hidden path="creditIban" value="${accountNumber}"/>
 
-            <div class="buttons">
-                <input class="myButton" type="submit" value="Submit">
-            </div>
+                <div class="buttons">
+                    <input class="myButton" type="submit" value="Submit">
+                </div>
 
-        </form:form>
-    </div><!-- form-container -->
-</div><!-- fadeInOne -->
-
+            </form:form>
+        </div><!-- form-container -->
+    </div><!-- fadeInOne -->
+</main>
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
 </body>
 </html>
