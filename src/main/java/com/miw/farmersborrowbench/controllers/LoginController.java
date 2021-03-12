@@ -27,7 +27,9 @@ public class LoginController {
         System.out.println("submit login");
         User user = userRepository.searchByName(login.getUsername());
 
-        if (result.hasErrors()) return "login";
+        if (result.hasErrors()) {
+            return "login";
+        }
 
         if (user == null || !user.getPassword().equals(login.getPassword())) {
             model.addAttribute("loginError", "Login details incorrect");

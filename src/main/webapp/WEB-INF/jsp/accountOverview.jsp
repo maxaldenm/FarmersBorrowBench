@@ -44,7 +44,7 @@
         <div class="addNewAccount">
             <h4>Add New Account</h4>
         </div>
-        <div class="EditAccountInformation">
+        <div class="editAccountInformation">
             <h4>Edit Account Information</h4>
         </div>
         <div class="linkNewUserToAccount">

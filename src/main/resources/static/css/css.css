@@ -39,8 +39,9 @@ label {
 }
 
 .error {
-    color: red;
+    color: #f7971e;
     display: inline-block;
+    font-weight: bold;
 }
 
 .showMkb {
@@ -383,6 +384,75 @@ nav {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
+.accountOverviewButtons {
+    width: 100%;
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 15vh;
+    background-color: #242424;
+    color: whitesmoke;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: #f7971e 1px solid;
+}
+
+.userInformation {
+    grid-column: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border: black 1px solid;
+}
+
+.userInformation:hover {
+    background-color: #f7971e;
+    color: black;
+}
+
+.addNewAccount {
+    grid-column: 2/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border: black 1px solid;
+}
+
+.addNewAccount:hover {
+    background-color: #f7971e;
+    color: black;
+}
+
+.editAccountInformation {
+    grid-column: 3/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border: black 1px solid;
+}
+
+.editAccountInformation:hover {
+    background-color: #f7971e;
+    color: black;
+}
+
+.linkNewUserToAccount {
+    grid-column: 4/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border: black 1px solid;
+}
+
+.linkNewUserToAccount:hover {
+    background-color: #f7971e;
+    color: black;
+}
+
 .account {
     width: 100%;
     background-color: whitesmoke;
@@ -643,6 +713,7 @@ nav {
     align-items: center;
     justify-content: center;
     display: flex;
+    border: whitesmoke 1px solid;
 }
 
 .container {
