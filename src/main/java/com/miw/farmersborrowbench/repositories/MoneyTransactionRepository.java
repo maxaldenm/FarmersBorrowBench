@@ -12,4 +12,6 @@ public interface MoneyTransactionRepository extends CrudRepository<MoneyTransact
     List<MoneyTransaction> findMoneyTransactionsByDebitAccountAccountNumber(String debitIban);
 
     List<MoneyTransaction> findMoneyTransactionsByCreditAccountAccountNumber(String creditIban);
+
+    List<MoneyTransaction> findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(String creditIban, String debitIban);
 }

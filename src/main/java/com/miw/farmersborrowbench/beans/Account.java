@@ -57,4 +57,11 @@ public class Account {
     public void setUser(User user) {
         users.add(user);
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountNumber='" + accountNumber + '\'' +
+                '}';
+    }
 }

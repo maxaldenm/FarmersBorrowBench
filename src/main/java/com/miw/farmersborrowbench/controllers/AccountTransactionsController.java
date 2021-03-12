@@ -27,10 +27,10 @@ public class AccountTransactionsController {
     MoneyTransactionRepository moneyTransactionRepository;
 
     @PostMapping("/accountTransactions")
-    public String getAccountTransactions(@ModelAttribute("account") Account account, Model model) {
-        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByCreditAccountAccountNumber(account.getAccountNumber());
+    public String getAccountTransactions(@SessionAttribute("account") Account account, Model model) {
+        System.out.println("/accountTransactions");
+        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
         System.out.println(account);
-
         model.addAttribute("moneyTransactions", moneyTransactions);
         model.addAttribute("account", account);
         return "accountTransactions";

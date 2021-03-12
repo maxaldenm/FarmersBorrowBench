@@ -13,6 +13,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -25,11 +26,15 @@ public class MoneyTransactionController {
     MoneyTransactionRepository moneyTransactionRepository;
 
     @PostMapping("/moneyTransaction")
-    public String processSubmitMoneyTransaction(@Valid @ModelAttribute("moneytransactionform") MoneyTransactionForm moneyTransactionForm, BindingResult result, Model model) {
+    public String processSubmitMoneyTransaction(@Valid @ModelAttribute("moneytransactionform") MoneyTransactionForm moneyTransactionForm, HttpSession session, BindingResult result, Model model) {
         System.out.println("submit money transaction");
         if (result.hasErrors()) return "moneyTransaction";
         Account debitAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getDebitIban());
+        debitAccount.setBalance(debitAccount.getBalance()+Integer.parseInt(moneyTransactionForm.getAmount()));
+        accountRepository.save(debitAccount);
         Account creditAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getCreditIban());
+        creditAccount.setBalance(creditAccount.getBalance()-Integer.parseInt(moneyTransactionForm.getAmount()));
+        accountRepository.save(creditAccount);
         if (debitAccount != null && creditAccount != null) {
             MoneyTransaction moneyTransaction = new MoneyTransaction();
             moneyTransaction.setAmount(Integer.parseInt(moneyTransactionForm.getAmount()));
@@ -38,7 +43,8 @@ public class MoneyTransactionController {
             moneyTransaction.setCreditAccount(creditAccount);
             moneyTransactionRepository.save(moneyTransaction);
         }
-        model.addAttribute("account", creditAccount);
+        System.out.println(creditAccount.toString());
+        session.setAttribute("account", creditAccount);
         return "forward:/accountTransactions";
     }
 }

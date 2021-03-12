@@ -49,7 +49,7 @@
             </div>
             <!-- accountOneInfoBar -->
             <div class="thisTransactionInfoBar">
-                <h5 class="creditAccount">credit account</h5>
+                <h5 class="creditAccount">transfer account</h5>
                 <h5 class="transferDescription">transfer Description</h5>
                 <h5 class="transferAmount">Amount</h5>
             </div>
@@ -60,12 +60,14 @@
 
                 <div class="transactionEven">
                     <div class="creditAccount">
-                            ${transaction.debitAccount.accountNumber}
+                        <c:if test="${transaction.creditAccount.accountNumber==account.accountNumber}">${transaction.debitAccount.accountNumber}</c:if>
+                        <c:if test="${transaction.debitAccount.accountNumber==account.accountNumber}">${transaction.creditAccount.accountNumber}</c:if>
                     </div>
                     <div class="transferDescription">
                             ${transaction.description}
                     </div>
                     <div class="transferAmount">
+                        <c:if test="${transaction.creditAccount.accountNumber==account.accountNumber}">-</c:if>
                             ${transaction.amount}
                     </div>
                 </div>
