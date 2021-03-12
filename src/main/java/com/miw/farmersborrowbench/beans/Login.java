@@ -3,7 +3,6 @@ package com.miw.farmersborrowbench.beans;
 import javax.validation.constraints.NotEmpty;
 
 public class Login {
-
     @NotEmpty(message = "{name.empty}")
     private String username;
     @NotEmpty(message = "{password.empty}")
