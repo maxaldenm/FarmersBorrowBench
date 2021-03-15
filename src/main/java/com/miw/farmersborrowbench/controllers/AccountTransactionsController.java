@@ -27,9 +27,10 @@ public class AccountTransactionsController {
     MoneyTransactionRepository moneyTransactionRepository;
 
     @PostMapping("/accountTransactions")
-    public String getAccountTransactions(@SessionAttribute("account") Account account, Model model) {
-        System.out.println("/accountTransactions");
-        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+    public String getAccountTransactions(@ModelAttribute("account") Account account, Model model) {
+        System.out.println("get account transactions");
+        List<MoneyTransaction> moneyTransactions =
+                moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
         System.out.println(account);
         model.addAttribute("moneyTransactions", moneyTransactions);
         model.addAttribute("account", account);
@@ -38,9 +39,16 @@ public class AccountTransactionsController {
 
     @GetMapping("/goToMoneyTransaction")
     public String goToAccountTransactions(@RequestParam("accountNumber") String accountNumber, Model model) {
-        Account account = accountRepository.findAccountByAccountNumber(accountNumber);
+        /*Account account = accountRepository.findAccountByAccountNumber(accountNumber);*/
         model.addAttribute("accountNumber", accountNumber);
         return "moneyTransaction";
+    }
+
+    @GetMapping("/goBackToAccountOverview")
+    public String goBackToAccountOverview(@SessionAttribute("user") User user, Model model) {
+        List<Account> accountList = accountRepository.findAllByUsersContains(user);
+        model.addAttribute("accountList", accountList);
+        return "accountOverview";
     }
 
 }

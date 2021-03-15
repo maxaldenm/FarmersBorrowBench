@@ -23,7 +23,7 @@
     </div>
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/goToHomeLoggedIn">Home</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
+        <li><a href="${pageContext.request.contextPath}/goBackToAccountOverview">Account</a></li>
         <li><a href="${pageContext.request.contextPath}/goToContactLoggedIn">Contact</a></li>
         <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
         <li><a href="${pageContext.request.contextPath}/about">About</a></li>
@@ -78,6 +78,7 @@
 
         </div>
         <div class="selectionBar">
+            <a href="${pageContext.request.contextPath}/goBackToAccountOverview" class="myButton">Account Overview</a>
             <a href="${pageContext.request.contextPath}/goToMoneyTransaction?accountNumber=${account.accountNumber}"
                class="myButton">Transaction</a>
         </div>

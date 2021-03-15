@@ -23,7 +23,7 @@
     </div>
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/goToHomeLoggedIn">Home</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
+        <li><a href="${pageContext.request.contextPath}/goBackToAccountOverview">Account</a></li>
         <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
     </ul>
     <div class="burger">

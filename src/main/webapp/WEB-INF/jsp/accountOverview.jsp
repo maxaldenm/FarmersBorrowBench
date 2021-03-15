@@ -52,24 +52,25 @@
         </div>
     </div><!-- accountOverviewButtons -->
 
-    <!-- <c:if test="${!empty(sessionScope.user.accounts)}"> -->
-    <!-- <c:forEach var="account" items="${sessionScope.user.accounts}"> -->
-    <div class="fadeInOne">
-        <div class="account">
-            <div class="accountOneInfoBar">
-                <h5 class="userAccountOneIban">IBAN:</h5>
-                <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
-                <h5 class="userAccountOnebalance">balance: </h5>
-                <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
-            </div><!-- accountOneInfoBar -->
-            <div class="selectionBar">
-                <a class="myButton"
-                   href="${pageContext.request.contextPath}/goToAccountTransactions?accountNumber=${account.accountNumber}">Select</a>
+    <c:if test="${!empty(accountList)}">
+        <c:forEach var="account" items="${accountList}">
+            <div class="fadeInOne">
+            <div class="account">
+                <div class="accountOneInfoBar">
+                    <h5 class="userAccountOneIban">IBAN:</h5>
+                    <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
+                    <h5 class="userAccountOnebalance">balance: </h5>
+                    <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
+                </div><!-- accountOneInfoBar -->
+                <div class="selectionBar">
+                    <a class="myButton"
+                       href="${pageContext.request.contextPath}/goToAccountTransactions?accountNumber=${account.accountNumber}">Select</a>
+                </div>
             </div>
-        </div><!-- account -->
-        <!--</c:forEach>-->
-    </div><!-- fadeInOne -->
-    <!-- </c:if> -->
+            <!-- account -->
+        </c:forEach>
+        </div><!-- fadeInOne -->
+    </c:if>
 </main>
 
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
