@@ -38,38 +38,38 @@
     <em>Welcome ${sessionScope.user.fname} ${sessionScope.user.getsuffix()} ${sessionScope.user.lname}</em>
 
     <div class="accountOverviewButtons">
-        <div class="userInformation">
+        <div class="userInformation opmaakAccountOverview">
             <h4>Edit User Information</h4>
         </div>
-        <div class="addNewAccount">
-            <h4>Add New Account</h4>
-        </div>
-        <div class="editAccountInformation">
+        <a class="addNewAccount opmaakAccountOverview" href="${pageContext.request.contextPath}/goToRegisterNewAccount">
+            <h4>Add new account</h4></a>
+        <div class="editAccountInformation opmaakAccountOverview">
             <h4>Edit Account Information</h4>
         </div>
-        <div class="linkNewUserToAccount">
+        <div class="linkNewUserToAccount opmaakAccountOverview">
             <h4>Link New User To Account</h4>
         </div>
     </div><!-- accountOverviewButtons -->
 
-    <!-- <c:if test="${!empty(sessionScope.user.accounts)}"> -->
-    <!-- <c:forEach var="account" items="${sessionScope.user.accounts}"> -->
-    <div class="fadeInOne">
-        <div class="account">
-            <div class="accountOneInfoBar">
-                <h5 class="userAccountOneIban">IBAN:</h5>
-                <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
-                <h5 class="userAccountOnebalance">balance: </h5>
-                <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
-            </div><!-- accountOneInfoBar -->
-            <div class="selectionBar">
-                <a class="myButton"
-                   href="${pageContext.request.contextPath}/goToAccountTransactions?accountNumber=${account.accountNumber}">Select</a>
-            </div>
-        </div><!-- account -->
-        <!--</c:forEach>-->
-    </div><!-- fadeInOne -->
-    <!-- </c:if> -->
+    <c:if test="${!empty(sessionScope.user.accounts)}">
+        <div class="fadeInOne">
+            <div class="account">
+                <c:forEach var="account" items="${sessionScope.user.accounts}">
+                        <div class="accountOneInfoBar">
+                            <h5 class="userAccountOneIban">IBAN:</h5>
+                            <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
+                            <h5 class="userAccountOnebalance">balance: </h5>
+                            <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
+                            <div class="selectionBar selectionBarButton">
+                                <a class="myButton"
+                                   href="${pageContext.request.contextPath}/goToAccountTransactions?accountNumber=${account.accountNumber}">Select</a>
+                            </div>
+                        </div><!-- accountOneInfoBar -->
+                </c:forEach>
+            </div><!-- account -->
+        </div>
+        <!-- fadeInOne -->
+    </c:if>
 </main>
 
 <script src="${pageContext.request.contextPath}/js/app.js"></script>

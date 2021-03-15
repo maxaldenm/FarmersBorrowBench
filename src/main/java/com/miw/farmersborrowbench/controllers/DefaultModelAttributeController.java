@@ -1,9 +1,6 @@
 package com.miw.farmersborrowbench.controllers;
 
-import com.miw.farmersborrowbench.beans.Account;
-import com.miw.farmersborrowbench.beans.Login;
-import com.miw.farmersborrowbench.beans.MoneyTransactionForm;
-import com.miw.farmersborrowbench.beans.User;
+import com.miw.farmersborrowbench.beans.*;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -36,5 +33,10 @@ public class DefaultModelAttributeController {
     @ModelAttribute("moneytransactionform")
     public MoneyTransactionForm getDefaultMoneyTransactionForm() {
         return new MoneyTransactionForm();
+    }
+
+    @ModelAttribute("accountnewform")
+    public AccountNewForm getDefaultAccountNewForm() {
+        return new AccountNewForm();
     }
 }

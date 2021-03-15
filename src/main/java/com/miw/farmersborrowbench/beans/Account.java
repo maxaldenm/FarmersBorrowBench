@@ -67,6 +67,14 @@ public class Account {
         this.name = name;
     }
 
+    public boolean isMKB() {
+        return MKB;
+    }
+
+    public void setMKB(boolean MKB) {
+        this.MKB = MKB;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
