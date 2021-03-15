@@ -1,7 +1,6 @@
 package com.miw.farmersborrowbench.beans;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class MoneyTransaction {

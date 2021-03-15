@@ -8,6 +8,12 @@ public class MoneyTransactionForm {
     @Pattern(regexp = "(^[0-9]*$)", message = "Only enter numbers")
     private String amount;
 
+    private String lastName;
+
+    private boolean checkLname;
+
+
+
     @NotEmpty
     private String description;
 
@@ -46,5 +52,21 @@ public class MoneyTransactionForm {
 
     public void setCreditIban(String creditIban) {
         this.creditIban = creditIban;
+    }
+
+    public boolean isCheckLname() {
+        return checkLname;
+    }
+
+    public void setCheckLname(boolean checkLname) {
+        this.checkLname = checkLname;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
