@@ -11,8 +11,9 @@ public class Account {
     private Integer id;
     private int balance;
     private String accountNumber;
-    //private String Iban;
+    private String name;
     private int pinNumber;
+    private boolean MKB;
 
 
     @ManyToMany(mappedBy = "accounts")
@@ -56,6 +57,14 @@ public class Account {
 
     public void setUser(User user) {
         users.add(user);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
