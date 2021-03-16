@@ -1,7 +1,7 @@
 package com.miw.farmersborrowbench.controllers;
 
 import com.miw.farmersborrowbench.beans.Account;
-import com.miw.farmersborrowbench.beans.AccountNewForm;
+import com.miw.farmersborrowbench.forms.AccountNewForm;
 import com.miw.farmersborrowbench.beans.Iban;
 import com.miw.farmersborrowbench.beans.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;

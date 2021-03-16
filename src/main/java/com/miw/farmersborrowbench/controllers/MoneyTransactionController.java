@@ -2,20 +2,17 @@ package com.miw.farmersborrowbench.controllers;
 
 import com.miw.farmersborrowbench.beans.Account;
 import com.miw.farmersborrowbench.beans.MoneyTransaction;
-import com.miw.farmersborrowbench.beans.MoneyTransactionForm;
+import com.miw.farmersborrowbench.forms.MoneyTransactionForm;
 import com.miw.farmersborrowbench.beans.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.MoneyTransactionRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;

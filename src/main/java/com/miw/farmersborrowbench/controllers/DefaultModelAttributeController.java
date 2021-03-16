@@ -1,6 +1,8 @@
 package com.miw.farmersborrowbench.controllers;
 
 import com.miw.farmersborrowbench.beans.*;
+import com.miw.farmersborrowbench.forms.AccountNewForm;
+import com.miw.farmersborrowbench.forms.MoneyTransactionForm;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
