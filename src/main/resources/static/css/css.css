@@ -10,6 +10,7 @@ body {
     background: linear-gradient(to right bottom, #565656, whitesmoke);
 }
 
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -30,19 +31,16 @@ input {
     width: 30%;
     height: 30px;
     margin-bottom: 10px;
-    border: aqua 1px solid;
 }
 
 label {
     display: inline-block;
     width: 20%;
     text-align: right;
-    border: red 1px solid;
 }
 
 .checkerCheckbox {
     display: inline-block;
-    border: greenyellow 1px solid;
     height: fit-content;
     width: auto;
     transform: scale(2);
@@ -409,9 +407,13 @@ nav {
     border: #f7971e 1px solid;
 }
 
-.accountOverviewButtons a{
-    color: inherit;
-    text-decoration: inherit;
+.accountOverviewButtons a {
+    text-decoration: none;
+}
+
+.accountOverviewButtons a:hover {
+    background-color: #f7971e;
+    color: black;
 }
 
 .opmaakAccountOverview {
@@ -426,6 +428,12 @@ nav {
     background-color: #f7971e;
     color: black;
 }
+
+.opmaakAccountOverview:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 .userInformation {
     grid-column: 1/2;
@@ -497,9 +505,17 @@ nav {
     padding: 4px 12px 4px 4px;
     text-align: center;
 }
+
 .selectionBarButton {
     grid-column: 5/6;
+    text-decoration: none;
+    list-style: none;
 }
+
+.selectionBarButton a {
+    text-decoration: none;
+}
+
 
 .accountOneTransactionView {
     margin: 0;
@@ -532,10 +548,6 @@ nav {
     float: right;
     align-items: center;
     background-color: #242424;
-}
-
-.selectionBar a {
-    margin-right: 24px;
 }
 
 .thisAccount {

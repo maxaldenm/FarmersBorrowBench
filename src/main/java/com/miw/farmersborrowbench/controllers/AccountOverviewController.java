@@ -29,15 +29,18 @@ public class AccountOverviewController {
     MoneyTransactionRepository moneyTransactionRepository;
 
     @PostMapping("/accountOverview")
-    public String getAccountOverview() {
+    public String getAccountOverview(@SessionAttribute("user") User user, Model model) {
+        List<Account> accountList = accountRepository.findAllByUsersContains(user);
 
+        model.addAttribute("accountList", accountList);
         return "accountOverview";
     }
 
     @GetMapping("/goToAccountTransactions")
     public String goToAccountTransactions(@RequestParam("accountNumber") String accountNumber, Model model) {
         Account account = accountRepository.findAccountByAccountNumber(accountNumber);
-        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+        List<MoneyTransaction> moneyTransactions =
+                moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
 
         model.addAttribute("moneyTransactions", moneyTransactions);
         model.addAttribute("account", account);

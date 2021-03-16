@@ -23,7 +23,7 @@
     </div>
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/goToHomeLoggedIn">Home</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
+        <li><a href="${pageContext.request.contextPath}/goBackToAccountOverview">Account</a></li>
         <li><a href="${pageContext.request.contextPath}/goToContactLoggedIn">Contact</a></li>
         <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
         <li><a href="${pageContext.request.contextPath}/about">About</a></li>
@@ -39,6 +39,7 @@
     <h2>Transaction</h2>
     <div class="fadeInOne">
         <div class="form-container">
+            <h3>transaction for ${accountNumber}</h3>
             <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
             <form:form action="/moneyTransaction" method="post" modelAttribute="moneytransactionform">
 

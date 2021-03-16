@@ -8,14 +8,18 @@ import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.MoneyTransactionRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class MoneyTransactionController {
@@ -35,11 +39,12 @@ public class MoneyTransactionController {
         Account debitAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getDebitIban());
         User checkUser = null;
 
-        if(debitAccount != null) {
-            checkUser = userRepository.findByLnameEqualsAndAccountsContains(moneyTransactionForm.getLastName(),debitAccount);
+        if (debitAccount != null) {
+            checkUser = userRepository.findByLnameEqualsAndAccountsContains(moneyTransactionForm.getLastName(),
+                    debitAccount);
         }
 
-        if(checkUser != null) {
+        if (checkUser != null) {
             moneyTransactionForm.setCheckLname(true);
         } else {
             moneyTransactionForm.setCheckLname(false);
@@ -48,35 +53,61 @@ public class MoneyTransactionController {
     }
 
     @PostMapping(value = "/moneyTransaction", params = "submit")
-    public String processSubmitMoneyTransaction(@Valid @ModelAttribute("moneytransactionform") MoneyTransactionForm moneyTransactionForm, HttpSession session, BindingResult result, Model model) {
+    public String processSubmitMoneyTransaction(@Valid @ModelAttribute("moneytransactionform") MoneyTransactionForm moneyTransactionForm,
+                                                BindingResult result, HttpSession session, Model model) {
         System.out.println("submit money transaction");
+
         if (result.hasErrors()) return "moneyTransaction";
-        Account debitAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getDebitIban());
 
-        System.out.println(debitAccount.getBalance());
-
-        Boolean lnameCheck = false;
-        String lastName = moneyTransactionForm.getLastName();
-
-        User receiver = userRepository.findUserByLnameContains(lastName);
-
-        System.out.println("receiver " + receiver.getLname());
-
-        debitAccount.setBalance(debitAccount.getBalance()+Integer.parseInt(moneyTransactionForm.getAmount()));
-        accountRepository.save(debitAccount);
+        //variable declaration
+        Account debitAccount = new Account();
         Account creditAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getCreditIban());
-        creditAccount.setBalance(creditAccount.getBalance()-Integer.parseInt(moneyTransactionForm.getAmount()));
-        accountRepository.save(creditAccount);
-        if (debitAccount != null && creditAccount != null) {
-            MoneyTransaction moneyTransaction = new MoneyTransaction();
-            moneyTransaction.setAmount(Integer.parseInt(moneyTransactionForm.getAmount()));
-            moneyTransaction.setDescription(moneyTransactionForm.getDescription());
-            moneyTransaction.setDebitAccount(debitAccount);
-            moneyTransaction.setCreditAccount(creditAccount);
-            moneyTransactionRepository.save(moneyTransaction);
+
+        //check form for correct input IBAN serverside
+        if (accountRepository.findAccountByAccountNumber(moneyTransactionForm.getDebitIban()) != null) {
+            //if iban exists in this bank: set debit account
+            debitAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getDebitIban());
+        } else {
+            //todo add errormessage that debitAccount does not exist in this bank
+            return "moneyTransaction";
         }
-        System.out.println(creditAccount.toString());
-        session.setAttribute("account", creditAccount);
-        return "forward:/accountTransactions";
+
+        //add amount to debit account
+        debitAccount.setBalance(debitAccount.getBalance() + Integer.parseInt(moneyTransactionForm.getAmount()));
+        accountRepository.save(debitAccount);
+
+        //subtract amount from credit account
+        creditAccount.setBalance(creditAccount.getBalance() - Integer.parseInt(moneyTransactionForm.getAmount()));
+        accountRepository.save(creditAccount);
+
+        //set Entity bean moneyTransaction to the values of the moneyTransactionFrom
+        MoneyTransaction moneyTransaction = new MoneyTransaction();
+        moneyTransaction.setAmount(Integer.parseInt(moneyTransactionForm.getAmount()));
+        moneyTransaction.setDescription(moneyTransactionForm.getDescription());
+        moneyTransaction.setDebitAccount(debitAccount);
+        moneyTransaction.setCreditAccount(creditAccount);
+        moneyTransactionRepository.save(moneyTransaction);
+
+        //add creditAccount to the model to pass it back to accountTransactions overview
+
+        List<MoneyTransaction> moneyTransactions =
+                moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber
+                (creditAccount.getAccountNumber(), creditAccount.getAccountNumber());
+
+        User creditUser = (User) session.getAttribute("user");
+        creditUser = userRepository.searchByBsn(creditUser.getBsn());
+
+        session.setAttribute("user", creditUser);
+        model.addAttribute("moneyTransactions", moneyTransactions);
+        model.addAttribute("account", creditAccount);
+        return "accountTransactions";
+
+
+
+
+       /* System.out.println(debitAccount.getBalance());
+
+        String lastName = moneyTransactionForm.getLastName();
+        System.out.println("receiver " + user.getLname());*/
     }
 }
