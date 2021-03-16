@@ -54,7 +54,7 @@ public class MoneyTransactionController {
 
     @PostMapping(value = "/moneyTransaction", params = "submit")
     public String processSubmitMoneyTransaction(@Valid @ModelAttribute("moneytransactionform") MoneyTransactionForm moneyTransactionForm,
-                                                BindingResult result, Model model) {
+                                                BindingResult result, HttpSession session, Model model) {
         System.out.println("submit money transaction");
 
         if (result.hasErrors()) return "moneyTransaction";
@@ -62,7 +62,6 @@ public class MoneyTransactionController {
         //variable declaration
         Account debitAccount = new Account();
         Account creditAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getCreditIban());
-        User debitUser = new User();
 
         //check form for correct input IBAN serverside
         if (accountRepository.findAccountByAccountNumber(moneyTransactionForm.getDebitIban()) != null) {
@@ -93,8 +92,12 @@ public class MoneyTransactionController {
 
         List<MoneyTransaction> moneyTransactions =
                 moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber
-                        (creditAccount.getAccountNumber(), creditAccount.getAccountNumber());
+                (creditAccount.getAccountNumber(), creditAccount.getAccountNumber());
 
+        User creditUser = (User) session.getAttribute("user");
+        creditUser = userRepository.searchByBsn(creditUser.getBsn());
+
+        session.setAttribute("user", creditUser);
         model.addAttribute("moneyTransactions", moneyTransactions);
         model.addAttribute("account", creditAccount);
         return "accountTransactions";
