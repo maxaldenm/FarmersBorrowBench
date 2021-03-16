@@ -55,22 +55,36 @@
             </div>
             <!-- thisTransactionInfoBar -->
             <div class="thisAccountTransactionView">
-            <c:if test="${!empty(moneyTransactions)}">
-            <c:forEach var="transaction" items="${moneyTransactions}">
+                <c:if test="${!empty(moneyTransactions)}">
+                <c:forEach var="transaction" items="${moneyTransactions}">
 
-                <div class="transactionEven">
-                    <div class="creditAccount">
-                        <c:if test="${transaction.creditAccount.accountNumber==account.accountNumber}">${transaction.debitAccount.accountNumber}</c:if>
-                        <c:if test="${transaction.debitAccount.accountNumber==account.accountNumber}">${transaction.creditAccount.accountNumber}</c:if>
+                    <div class="transactionEven">
+                        <div class="creditAccount">
+                            <c:if test="${transaction.creditAccount.accountNumber==account.accountNumber}">${transaction.debitAccount.accountNumber}</c:if>
+                            <c:if test="${transaction.debitAccount.accountNumber==account.accountNumber}">${transaction.creditAccount.accountNumber}</c:if>
+                        </div>
+                        <div class="transferDescription">
+                                ${transaction.description}
+                        </div>
+                        <c:choose>
+                            <c:when test="${transaction.creditAccount.accountNumber==account.accountNumber}">
+                                <div class="plusMinus">
+                                    -
+                                </div>
+                                <div class="transferAmountTrue">
+                                     ${transaction.amount}
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="plusMinus">
+                                    +
+                                </div>
+                                <div class="transferAmountFalse">
+                                    ${transaction.amount}
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
-                    <div class="transferDescription">
-                            ${transaction.description}
-                    </div>
-                    <div class="transferAmount">
-                        <c:if test="${transaction.creditAccount.accountNumber==account.accountNumber}">-</c:if>
-                            ${transaction.amount}
-                    </div>
-                </div>
 
                 </c:forEach>
             </div>
@@ -83,8 +97,6 @@
                class="myButton">Transaction</a>
         </div>
     </div>
-
-
 
 
 </main>
