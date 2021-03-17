@@ -58,7 +58,7 @@
                 <c:if test="${!empty(moneyTransactions)}">
                 <c:forEach var="transaction" items="${moneyTransactions}">
 
-                    <div class="transactionEven">
+                    <div class="transactionGrid">
                         <div class="creditAccount">
                             <c:if test="${transaction.creditAccount.accountNumber==account.accountNumber}">${transaction.debitAccount.accountNumber}</c:if>
                             <c:if test="${transaction.debitAccount.accountNumber==account.accountNumber}">${transaction.creditAccount.accountNumber}</c:if>
@@ -72,7 +72,8 @@
                                     -
                                 </div>
                                 <div class="transferAmountTrue">
-                                     ${transaction.amount}
+                                        ${transaction.amountWithoutDecimalToString()} ,
+                                    <sup>${transaction.amountOnlyDecimalPlacesToString()}</sup>
                                 </div>
                             </c:when>
                             <c:otherwise>
@@ -80,7 +81,8 @@
                                     +
                                 </div>
                                 <div class="transferAmountFalse">
-                                    ${transaction.amount}
+                                        ${transaction.amountWithoutDecimalToString()} ,
+                                    <sup>${transaction.amountOnlyDecimalPlacesToString()}</sup>
                                 </div>
                             </c:otherwise>
                         </c:choose>
