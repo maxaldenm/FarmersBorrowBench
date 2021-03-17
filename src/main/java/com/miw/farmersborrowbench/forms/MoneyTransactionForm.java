@@ -5,7 +5,7 @@ import javax.validation.constraints.Pattern;
 
 public class MoneyTransactionForm {
 
-    @Pattern(regexp = "(^[0-9]*$)", message = "Only enter numbers")
+    //@Pattern(regexp = "(^[0-9]*$)", message = "Only enter numbers")
     private String amount;
 
     private String lastName;

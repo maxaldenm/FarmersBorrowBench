@@ -59,6 +59,9 @@
                 <c:forEach var="transaction" items="${moneyTransactions}">
 
                     <div class="transactionGrid">
+                        <div class="transferDate">
+                            ${transaction.localDateTimeToDateWithSlash()}
+                        </div>
                         <div class="creditAccount">
                             <c:if test="${transaction.creditAccount.accountNumber==account.accountNumber}">${transaction.debitAccount.accountNumber}</c:if>
                             <c:if test="${transaction.debitAccount.accountNumber==account.accountNumber}">${transaction.creditAccount.accountNumber}</c:if>
