@@ -29,10 +29,11 @@ public class AccountOverviewController {
     @Autowired
     MoneyTransactionRepository moneyTransactionRepository;
 
-    @PostMapping("/accountOverview")
-    public String getAccountOverview(@SessionAttribute("user") User user, Model model) {
+    @GetMapping("/accountOverview")
+    public String getAccountOverview(HttpSession session, Model model) {
         System.out.println("hier ben ik");
-        List<Account> accountList = accountRepository.findAllByUsersContains(user);
+        //List<Account> accountList = accountRepository.findAllByUsersContains(user);
+        List<Account> accountList = accountRepository.findAllByUsersContains((User) session.getAttribute("user"));
 
         model.addAttribute("accountList", accountList);
         return "accountOverview";

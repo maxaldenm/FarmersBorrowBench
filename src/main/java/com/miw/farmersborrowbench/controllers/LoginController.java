@@ -22,7 +22,7 @@ public class LoginController {
     @Autowired
     AccountRepository accountRepository;
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public String processSubmitLogin(@Valid @ModelAttribute("login") Login login, BindingResult result, HttpSession session,  Model model) {
         System.out.println("submit login");
         User user = userRepository.searchByName(login.getUsername());
