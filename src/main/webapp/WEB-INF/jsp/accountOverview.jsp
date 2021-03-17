@@ -52,9 +52,9 @@
     </div><!-- accountOverviewButtons -->
 
     <div class="form-container">
-        <form action="/searchAccountOverview" method="get">
+        <form action="/searchAccountOverview" method="post">
             <label><h3>Search in accounts:</h3></label>
-            <input path="search" name="search"/><br>
+            <input path="search" name="search" value="${search}"/><br>
             <div class="buttons">
                 <input class="myButton" type="submit" value="Search">
             </div>
@@ -66,10 +66,10 @@
         </form>
     </div>
     <br><br><br>
-    <c:if test="${!empty(sessionScope.user.accounts)}">
+    <c:if test="${!empty(accountList)}">
         <div class="fadeInOne">
             <div class="account">
-                <c:forEach var="account" items="${sessionScope.user.accounts}">
+                <c:forEach var="account" items="${accountList}">
                         <div class="accountOneInfoBar">
                             <h5 class="userAccountOneIban">IBAN:</h5>
                             <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>

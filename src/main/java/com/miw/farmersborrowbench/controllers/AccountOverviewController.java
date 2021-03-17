@@ -31,6 +31,7 @@ public class AccountOverviewController {
 
     @PostMapping("/accountOverview")
     public String getAccountOverview(@SessionAttribute("user") User user, Model model) {
+        System.out.println("hier ben ik");
         List<Account> accountList = accountRepository.findAllByUsersContains(user);
 
         model.addAttribute("accountList", accountList);
@@ -48,7 +49,7 @@ public class AccountOverviewController {
         return "accountTransactions";
     }
 
-    @GetMapping("/searchAccountOverview")
+    @PostMapping("/searchAccountOverview")
     public String searchAccountOverview(@RequestParam("search") String search, Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         List<Account> accounts = user.getAccounts();
@@ -58,9 +59,9 @@ public class AccountOverviewController {
              ) {
             if(a.toSearchString().toLowerCase().contains(searchLower)) foundAccounts.add(a);
         }
-        model.addAttribute("foundAccounts", foundAccounts);
+        model.addAttribute("accountList", foundAccounts);
         model.addAttribute("search", search);
-        return "accountOverviewSearch";
+        return "accountOverview";
     }
 
 }
