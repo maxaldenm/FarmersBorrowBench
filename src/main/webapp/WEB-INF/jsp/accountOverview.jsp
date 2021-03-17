@@ -67,6 +67,7 @@
                         </div><!-- accountOneInfoBar -->
                 </c:forEach>
             </div><!-- account -->
+
         </div>
         <!-- fadeInOne -->
     </c:if>
