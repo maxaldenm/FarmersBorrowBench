@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -69,20 +71,22 @@ public class MoneyTransactionController {
             return "moneyTransaction";
         }
 
+
         //add amount to debit account
-        debitAccount.setBalance(debitAccount.getBalance() + Integer.parseInt(moneyTransactionForm.getAmount()));
+        debitAccount.setBalance(debitAccount.getBalance() + Double.parseDouble(moneyTransactionForm.getAmount()));
         accountRepository.save(debitAccount);
 
         //subtract amount from credit account
-        creditAccount.setBalance(creditAccount.getBalance() - Integer.parseInt(moneyTransactionForm.getAmount()));
+        creditAccount.setBalance(creditAccount.getBalance() - Double.parseDouble(moneyTransactionForm.getAmount()));
         accountRepository.save(creditAccount);
 
         //set Entity bean moneyTransaction to the values of the moneyTransactionFrom
         MoneyTransaction moneyTransaction = new MoneyTransaction();
-        moneyTransaction.setAmount(Integer.parseInt(moneyTransactionForm.getAmount()));
+        moneyTransaction.setAmount(Double.parseDouble(moneyTransactionForm.getAmount()));
         moneyTransaction.setDescription(moneyTransactionForm.getDescription());
         moneyTransaction.setDebitAccount(debitAccount);
         moneyTransaction.setCreditAccount(creditAccount);
+        moneyTransaction.setDate(LocalDateTime.now());
         moneyTransactionRepository.save(moneyTransaction);
 
         //add creditAccount to the model to pass it back to accountTransactions overview

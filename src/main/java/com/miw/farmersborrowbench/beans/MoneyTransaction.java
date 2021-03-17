@@ -1,6 +1,8 @@
 package com.miw.farmersborrowbench.beans;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class MoneyTransaction {
@@ -9,7 +11,7 @@ public class MoneyTransaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private double amount = 0.00;
+    private double amount;
 
     private String description;
 
@@ -18,6 +20,8 @@ public class MoneyTransaction {
 
     @ManyToOne
     private Account creditAccount;
+
+    private LocalDateTime date;
 
     public int getId() {
         return id;
@@ -55,6 +59,15 @@ public class MoneyTransaction {
         this.creditAccount = creditAccount;
     }
 
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
     public String amountWithoutDecimalToString() {
         String amountString = String.valueOf(this.amount);
         String f;
@@ -75,6 +88,10 @@ public class MoneyTransaction {
         } else
             l = parts[1].substring(0, 2);
         return l;
+    }
+
+    public String localDateTimeToDateWithSlash() {
+        return DateTimeFormatter.ofPattern("dd/MM/yyyy").format(this.date);
     }
 
 }
