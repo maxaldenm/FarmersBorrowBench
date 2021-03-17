@@ -38,7 +38,7 @@
         <div class="form-container">
 
             <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
-            <form:form action="/login" method="post" modelAttribute="login">
+            <form:form action="/login" method="get" modelAttribute="login">
 
                 <label for="username"><h3>Username:</h3></label>
                 <form:input path="username" type="text"/><form:errors path="username" cssClass="error"/><br>
