@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class AccountOverviewController {
@@ -45,6 +46,21 @@ public class AccountOverviewController {
         model.addAttribute("moneyTransactions", moneyTransactions);
         model.addAttribute("account", account);
         return "accountTransactions";
+    }
+
+    @GetMapping("/searchAccountOverview")
+    public String searchAccountOverview(@RequestParam("search") String search, Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        List<Account> accounts = user.getAccounts();
+        List<Account> foundAccounts = new ArrayList<>();
+        String searchLower = search.toLowerCase(Locale.ROOT);
+        for (Account a: accounts
+             ) {
+            if(a.toSearchString().toLowerCase().contains(searchLower)) foundAccounts.add(a);
+        }
+        model.addAttribute("foundAccounts", foundAccounts);
+        model.addAttribute("search", search);
+        return "accountOverviewSearch";
     }
 
 }

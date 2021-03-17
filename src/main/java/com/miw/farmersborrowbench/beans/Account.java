@@ -81,4 +81,8 @@ public class Account {
                 "accountNumber='" + accountNumber + '\'' +
                 '}';
     }
+
+    public String toSearchString() {
+        return balance+" "+accountNumber+" "+name;
+    }
 }

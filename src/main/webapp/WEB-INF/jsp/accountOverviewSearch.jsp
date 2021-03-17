@@ -54,7 +54,7 @@
     <div class="form-container">
         <form action="/searchAccountOverview" method="get">
             <label><h3>Search in accounts:</h3></label>
-            <input path="search" name="search"/><br>
+            <input path="search" name="search" value="${search}"/><br>
             <div class="buttons">
                 <input class="myButton" type="submit" value="Search">
             </div>
@@ -66,20 +66,20 @@
         </form>
     </div>
     <br><br><br>
-    <c:if test="${!empty(sessionScope.user.accounts)}">
+    <c:if test="${!empty(foundAccounts)}">
         <div class="fadeInOne">
             <div class="account">
-                <c:forEach var="account" items="${sessionScope.user.accounts}">
-                        <div class="accountOneInfoBar">
-                            <h5 class="userAccountOneIban">IBAN:</h5>
-                            <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
-                            <h5 class="userAccountOnebalance">balance: </h5>
-                            <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
-                            <div class="selectionBar selectionBarButton">
-                                <a class="myButton"
-                                   href="${pageContext.request.contextPath}/goToAccountTransactions?accountNumber=${account.accountNumber}">Select</a>
-                            </div>
-                        </div><!-- accountOneInfoBar -->
+                <c:forEach var="account" items="${foundAccounts}">
+                    <div class="accountOneInfoBar">
+                        <h5 class="userAccountOneIban">IBAN:</h5>
+                        <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
+                        <h5 class="userAccountOnebalance">balance: </h5>
+                        <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
+                        <div class="selectionBar selectionBarButton">
+                            <a class="myButton"
+                               href="${pageContext.request.contextPath}/goToAccountTransactions?accountNumber=${account.accountNumber}">Select</a>
+                        </div>
+                    </div><!-- accountOneInfoBar -->
                 </c:forEach>
             </div><!-- account -->
         </div>
