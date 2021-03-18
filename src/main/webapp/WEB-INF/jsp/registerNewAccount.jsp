@@ -23,8 +23,10 @@
     </div>
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/goBackToAccountOverview">Account</a></li>
         <li><a href="${pageContext.request.contextPath}/goToContact">Contact</a></li>
         <li><a href="${pageContext.request.contextPath}/about">About</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>

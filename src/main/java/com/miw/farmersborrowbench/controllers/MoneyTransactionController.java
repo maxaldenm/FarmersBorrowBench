@@ -1,9 +1,9 @@
 package com.miw.farmersborrowbench.controllers;
 
-import com.miw.farmersborrowbench.beans.Account;
-import com.miw.farmersborrowbench.beans.MoneyTransaction;
-import com.miw.farmersborrowbench.beans.User;
-import com.miw.farmersborrowbench.forms.MoneyTransactionForm;
+import com.miw.farmersborrowbench.beans.entity.Account;
+import com.miw.farmersborrowbench.beans.entity.MoneyTransaction;
+import com.miw.farmersborrowbench.beans.entity.User;
+import com.miw.farmersborrowbench.beans.forms.MoneyTransactionForm;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.MoneyTransactionRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -32,6 +34,18 @@ public class MoneyTransactionController {
 
     @Autowired
     MoneyTransactionRepository moneyTransactionRepository;
+
+    @ModelAttribute("moneytransactionform")
+    public MoneyTransactionForm getDefaultMoneyTransactionForm() {
+        return new MoneyTransactionForm();
+    }
+
+    @GetMapping("/goToMoneyTransaction")
+    public String goToAccountTransactions(@RequestParam("accountNumber") String accountNumber, Model model) {
+        /*Account account = accountRepository.findAccountByAccountNumber(accountNumber);*/
+        model.addAttribute("accountNumber", accountNumber);
+        return "moneyTransaction";
+    }
 
     @PostMapping(value = "/moneyTransaction", params = "checker")
     public void processSubmitLastname(@Valid @ModelAttribute("moneytransactionform") MoneyTransactionForm moneyTransactionForm, HttpSession session, BindingResult result, Model model) {
