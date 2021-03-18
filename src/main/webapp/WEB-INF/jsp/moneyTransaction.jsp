@@ -50,19 +50,18 @@
                 <form:input path="description"/><form:errors path="description" cssClass="error"/><br>
 
                 <label for="debitIban"><h3>IBAN receiver:</h3></label>
-                <form:input path="debitIban" type="text"/><form:errors path="debitIban" cssClass="error"/><br>
+                <form:input path="debitIban" type="text"/><form:errors path="debitIban" cssClass="error"/>
+                <form:checkbox path="checkIban" class="checkerCheckbox"></form:checkbox><br>
 
                 <label for="lastName"><h3>Lastname receiver:</h3></label>
                 <form:input path="lastName"/><form:errors path="lastName" cssClass="error"/>
                 <form:checkbox path="checkLname" class="checkerCheckbox"></form:checkbox><br>
 
-                <label for="checkLname"><h3>Check lname:</h3></label>
-                <form:input path="checkLname"/><form:errors path="checkLname" cssClass="error"/><br>
 
                 <form:hidden path="creditIban" value="${accountNumber}"/>
 
                 <div class="buttons">
-                    <input class="myButton" type="submit" name="submit" value="Submit" >
+                    <input class="myButton" type="submit" name="submit" value="Submit"  >
                     <input class="myButton" type="submit" name="checker" value="Checker" >
                 </div>
 

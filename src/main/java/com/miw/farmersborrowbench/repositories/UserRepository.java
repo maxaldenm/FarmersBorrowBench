@@ -8,6 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
 
@@ -17,7 +19,12 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     @Query("select u from User u where u.username = :name")
     public User searchByName(@Param("name") String username);
 
-    User findUserByLnameContains(String lname);
+  //  User findUserByLnameContains(String lname);
 
     User findByLnameEqualsAndAccountsContains(String lname, Account account);
+
+    User findByLnameLikeAndAccountsContains(String lname, Account account);
+
+    List<User> getAllByAccountsContains(Account account);
+
 }
