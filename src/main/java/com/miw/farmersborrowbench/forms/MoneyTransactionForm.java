@@ -1,7 +1,6 @@
 package com.miw.farmersborrowbench.forms;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 
 public class MoneyTransactionForm {
 
@@ -12,6 +11,18 @@ public class MoneyTransactionForm {
 
     private boolean checkLname;
 
+    private boolean checkIban;
+
+
+    public String getCheckLnameText() {
+        return checkLnameText;
+    }
+
+    public void setCheckLnameText(String checkLnameText) {
+        this.checkLnameText = checkLnameText;
+    }
+
+    private String checkLnameText;
 
 
     @NotEmpty
@@ -62,6 +73,14 @@ public class MoneyTransactionForm {
         this.checkLname = checkLname;
     }
 
+    public boolean isCheckIban() {
+        return checkIban;
+    }
+
+    public void setCheckIban(boolean checkIban) {
+        this.checkIban = checkIban;
+    }
+
     public String getLastName() {
         return lastName;
     }
@@ -69,4 +88,6 @@ public class MoneyTransactionForm {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+
 }
