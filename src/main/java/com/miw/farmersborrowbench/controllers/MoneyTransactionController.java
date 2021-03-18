@@ -1,12 +1,13 @@
 package com.miw.farmersborrowbench.controllers;
 
-import com.miw.farmersborrowbench.beans.entity.Account;
-import com.miw.farmersborrowbench.beans.entity.MoneyTransaction;
-import com.miw.farmersborrowbench.beans.forms.MoneyTransactionForm;
-import com.miw.farmersborrowbench.beans.entity.User;
+import com.miw.farmersborrowbench.beans.Account;
+import com.miw.farmersborrowbench.beans.MoneyTransaction;
+import com.miw.farmersborrowbench.beans.User;
+import com.miw.farmersborrowbench.forms.MoneyTransactionForm;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.MoneyTransactionRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
+import me.xdrop.fuzzywuzzy.FuzzySearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import java.util.List;
 @Controller
 public class MoneyTransactionController {
 
+
     @Autowired
     AccountRepository accountRepository;
 
@@ -34,26 +36,67 @@ public class MoneyTransactionController {
     @PostMapping(value = "/moneyTransaction", params = "checker")
     public void processSubmitLastname(@Valid @ModelAttribute("moneytransactionform") MoneyTransactionForm moneyTransactionForm, HttpSession session, BindingResult result, Model model) {
         System.out.println("submit iban name checker ");
+        model.addAttribute("accountNumber",moneyTransactionForm.getCreditIban());
+        System.out.println(model.getAttribute("accountNumber"));
+
         Account debitAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getDebitIban());
         User checkUser = null;
+        List<User> userList = null;
 
         if (debitAccount != null) {
-            checkUser = userRepository.findByLnameEqualsAndAccountsContains(moneyTransactionForm.getLastName(),
+            checkUser = userRepository.findByLnameLikeAndAccountsContains(moneyTransactionForm.getLastName(),
                     debitAccount);
+            userList = userRepository.getAllByAccountsContains(debitAccount);
         }
 
-        if (checkUser != null) {
-            moneyTransactionForm.setCheckLname(true);
+        if (userList != null) {
+            //HashMap<Integer,String> hashMap = new HashMap<>();
+            int FUZZY_MATCH_SUCCESS = 80;
+            int fuzzyInt = 0;
+            String fuzzyString = null;
+            moneyTransactionForm.setCheckIban(true);
+
+            for (User user: userList) {
+//                Integer fuzzyInt = FuzzySearch.ratio(user.getLname(), moneyTransactionForm.getLastName());
+//                String fuzzyString = user.getLname();
+                int fuzzy = (FuzzySearch.tokenSetRatio(user.getLname(), moneyTransactionForm.getLastName()));
+                if(fuzzy > FUZZY_MATCH_SUCCESS) {
+                    fuzzyInt = fuzzy;
+                    fuzzyString = user.getLname();
+                    moneyTransactionForm.setCheckLname(true);
+                }
+            }
+            moneyTransactionForm.setLastName(moneyTransactionForm.getLastName() + " (" + fuzzyInt + "% match)");
+            //moneyTransactionForm.setCheckLnameText(" match: " + fuzzyInt + " with " + fuzzyString);
         } else {
             moneyTransactionForm.setCheckLname(false);
+            moneyTransactionForm.setCheckIban(false);
         }
+
+//        exact check
+//        if (debitAccount != null) {
+//            checkUser = userRepository.findByLnameEqualsAndAccountsContains(moneyTransactionForm.getLastName(),
+//                    debitAccount);
+//        }
+//
+//        if (checkUser != null) {
+//            moneyTransactionForm.setCheckLname(true);
+//        } else {
+//            moneyTransactionForm.setCheckLname(false);
+//        }
 
     }
 
     @PostMapping(value = "/moneyTransaction", params = "submit")
     public String processSubmitMoneyTransaction(@Valid @ModelAttribute("moneytransactionform") MoneyTransactionForm moneyTransactionForm,
                                                 BindingResult result, HttpSession session, Model model) {
+
+
+
         System.out.println("submit money transaction");
+        model.addAttribute("accountNumber",moneyTransactionForm.getCreditIban());
+
+        System.out.println(model.getAttribute("accountNumber"));
 
         if (result.hasErrors()) return "moneyTransaction";
 
