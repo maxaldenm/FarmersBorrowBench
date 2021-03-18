@@ -22,9 +22,9 @@
         <h4 class="logoText">Farmer's Borrow Bench</h4>
     </div>
     <ul class="nav-links">
-        <li><a href="${pageContext.request.contextPath}/goToHomeLoggedIn">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/goBackToAccountOverview">Account</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToContactLoggedIn">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToContact">Contact</a></li>
         <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
         <li><a href="${pageContext.request.contextPath}/about">About</a></li>
     </ul>

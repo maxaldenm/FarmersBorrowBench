@@ -23,6 +23,7 @@
     </div>
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/goToRegisterNewUser">Register</a></li>
         <li><a href="${pageContext.request.contextPath}/goToContact">Contact</a></li>
         <li><a href="${pageContext.request.contextPath}/about">About</a></li>
     </ul>
@@ -38,7 +39,7 @@
         <div class="form-container">
 
             <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
-            <form:form action="/login" method="get" modelAttribute="login">
+            <form:form action="/login" method="post" modelAttribute="login">
 
                 <label for="username"><h3>Username:</h3></label>
                 <form:input path="username" type="text"/><form:errors path="username" cssClass="error"/><br>

@@ -14,10 +14,4 @@ import java.util.List;
 @ControllerAdvice
 public class DefaultModelAttributeController {
 
-    @ModelAttribute("moneytransactionform")
-    public MoneyTransactionForm getDefaultMoneyTransactionForm() {
-        return new MoneyTransactionForm();
-    }
-
-
 }

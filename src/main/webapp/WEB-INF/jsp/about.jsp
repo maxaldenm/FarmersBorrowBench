@@ -21,13 +21,23 @@
         </a>
         <h4 class="logoText">Farmer's Borrow Bench</h4>
     </div>
-    <ul class="nav-links">
-        <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToRegisterNewUser">Register</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToAccountOverview">Account</a></li>
-        <li><a href="${pageContext.request.contextPath}/goToLogin">Login</a></li>
-        <li><a href="${pageContext.request.contextPath}/about">About</a></li>
-    </ul>
+
+    <c:if test="${!isLoggedIn}">
+        <ul class="nav-links">
+            <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/goToRegisterNewUser">Register</a></li>
+            <li><a href="${pageContext.request.contextPath}/goToContact">Contact</a></li>
+            <li><a href="${pageContext.request.contextPath}/goToLogin">Login</a></li>
+        </ul>
+    </c:if>
+    <c:if test="${isLoggedIn}">
+        <ul class="nav-links">
+            <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/goBackToAccountOverview">Account</a></li>
+            <li><a href="${pageContext.request.contextPath}/goToContact">Contact</a></li>
+            <li><a href="${pageContext.request.contextPath}/goToLogout">Logout</a></li>
+        </ul>
+    </c:if>
     <div class="burger">
         <div class="line1"></div>
         <div class="line2"></div>

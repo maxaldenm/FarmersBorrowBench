@@ -36,13 +36,6 @@ public class AccountTransactionsController {
         return "accountTransactions";
     }
 
-    @GetMapping("/goToMoneyTransaction")
-    public String goToAccountTransactions(@RequestParam("accountNumber") String accountNumber, Model model) {
-        /*Account account = accountRepository.findAccountByAccountNumber(accountNumber);*/
-        model.addAttribute("accountNumber", accountNumber);
-        return "moneyTransaction";
-    }
-
     @GetMapping("/goBackToAccountOverview")
     public String goBackToAccountOverview(@SessionAttribute("user") User user, Model model) {
         List<Account> accountList = accountRepository.findAllByUsersContains(user);

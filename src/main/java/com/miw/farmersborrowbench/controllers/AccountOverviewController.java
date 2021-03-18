@@ -3,6 +3,7 @@ package com.miw.farmersborrowbench.controllers;
 import com.miw.farmersborrowbench.beans.entity.Account;
 import com.miw.farmersborrowbench.beans.entity.MoneyTransaction;
 import com.miw.farmersborrowbench.beans.entity.User;
+import com.miw.farmersborrowbench.beans.forms.Login;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.MoneyTransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,22 @@ public class AccountOverviewController {
     @Autowired
     MoneyTransactionRepository moneyTransactionRepository;
 
+    @ModelAttribute("login")
+    public Login getDefaultLogin() {
+        return new Login();
+    }
+
     @RequestMapping(value = "/accountOverview", method = { RequestMethod.GET, RequestMethod.POST })
     public String getAccountOverview(HttpSession session, Model model) {
         System.out.println("postAccountOverview");
-        List<Account> accountList = accountRepository.findAllByUsersContains((User)session.getAttribute("user"));
+        if(session.getAttribute("isLoggedIn") != null){
+            List<Account> accountList = accountRepository.findAllByUsersContains((User)session.getAttribute("user"));
 
-        model.addAttribute("accountList", accountList);
-        return "accountOverview";
+            model.addAttribute("accountList", accountList);
+            return "accountOverview";
+        }else{
+            return "login";
+        }
     }
 
     @GetMapping("/goToAccountTransactions")
