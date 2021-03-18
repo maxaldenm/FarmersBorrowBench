@@ -1,6 +1,6 @@
 package com.miw.farmersborrowbench.repositories;
 
-import com.miw.farmersborrowbench.beans.MoneyTransaction;
+import com.miw.farmersborrowbench.beans.entity.MoneyTransaction;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

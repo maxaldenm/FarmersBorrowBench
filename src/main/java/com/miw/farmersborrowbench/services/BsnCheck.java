@@ -1,4 +1,4 @@
-package com.miw.farmersborrowbench.beans;
+package com.miw.farmersborrowbench.services;
 
 public class BsnCheck {
 

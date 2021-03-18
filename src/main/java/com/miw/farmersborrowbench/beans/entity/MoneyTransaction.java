@@ -1,4 +1,6 @@
-package com.miw.farmersborrowbench.beans;
+package com.miw.farmersborrowbench.beans.entity;
+
+import com.miw.farmersborrowbench.beans.entity.Account;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

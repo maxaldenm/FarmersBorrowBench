@@ -1,9 +1,9 @@
 package com.miw.farmersborrowbench.controllers;
 
-import com.miw.farmersborrowbench.beans.Account;
-import com.miw.farmersborrowbench.forms.AccountNewForm;
-import com.miw.farmersborrowbench.beans.Iban;
-import com.miw.farmersborrowbench.beans.User;
+import com.miw.farmersborrowbench.beans.entity.Account;
+import com.miw.farmersborrowbench.beans.forms.AccountNewForm;
+import com.miw.farmersborrowbench.services.Iban;
+import com.miw.farmersborrowbench.beans.entity.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +24,11 @@ public class RegisterNewAccountController {
     UserRepository userRepository;
     @Autowired
     AccountRepository accountRepository;
+
+    @ModelAttribute("accountnewform")
+    public AccountNewForm getDefaultAccountNewForm() {
+        return new AccountNewForm();
+    }
 
     @GetMapping("/goToRegisterNewAccount")
     public String goToRegisterNewAccount() {

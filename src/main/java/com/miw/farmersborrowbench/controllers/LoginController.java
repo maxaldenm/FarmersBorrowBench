@@ -1,7 +1,7 @@
 package com.miw.farmersborrowbench.controllers;
 
-import com.miw.farmersborrowbench.beans.Login;
-import com.miw.farmersborrowbench.beans.User;
+import com.miw.farmersborrowbench.beans.forms.Login;
+import com.miw.farmersborrowbench.beans.entity.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,17 @@ public class LoginController {
     UserRepository userRepository;
     @Autowired
     AccountRepository accountRepository;
+
+    @ModelAttribute("login")
+    public Login getDefaultLogin() {
+        return new Login();
+    }
+
+    @GetMapping("/goToLogin")
+    public String goToLogin() {
+        System.out.println("go to login");
+        return "login";
+    }
 
     @GetMapping("/login")
     public String processSubmitLogin(@Valid @ModelAttribute("login") Login login, BindingResult result, HttpSession session,  Model model) {

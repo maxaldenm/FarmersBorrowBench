@@ -1,7 +1,7 @@
 package com.miw.farmersborrowbench.repositories;
 
-import com.miw.farmersborrowbench.beans.Account;
-import com.miw.farmersborrowbench.beans.User;
+import com.miw.farmersborrowbench.beans.entity.Account;
+import com.miw.farmersborrowbench.beans.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

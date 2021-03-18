@@ -1,4 +1,4 @@
-package com.miw.farmersborrowbench.beans;
+package com.miw.farmersborrowbench.services;
 
 import java.math.BigInteger;
 import java.util.Locale;
