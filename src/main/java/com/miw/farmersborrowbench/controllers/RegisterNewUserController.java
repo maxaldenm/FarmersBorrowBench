@@ -1,8 +1,8 @@
 package com.miw.farmersborrowbench.controllers;
 
-import com.miw.farmersborrowbench.beans.Account;
-import com.miw.farmersborrowbench.beans.Iban;
-import com.miw.farmersborrowbench.beans.User;
+import com.miw.farmersborrowbench.beans.entity.Account;
+import com.miw.farmersborrowbench.services.Iban;
+import com.miw.farmersborrowbench.beans.entity.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +12,13 @@ import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class RegisterNewUserController {
@@ -25,6 +28,21 @@ public class RegisterNewUserController {
     @Autowired
     AccountRepository accountRepository;
 
+    @ModelAttribute("user")
+    public User getDefaultUser() {
+        return new User();
+    }
+
+    @ModelAttribute("sectorItems")
+    public List<String> getSectorItems() {
+        return Arrays.asList(new String[]{"Weed", "XTC", "Meth", "Adult", "Crypto"});
+    }
+
+    @GetMapping("/goToRegisterNewUser")
+    public String goToRegisterNewUser() {
+        System.out.println("go to register");
+        return "registerNewUser";
+    }
 
     @PostMapping("/registerNewUser")
     public String processtSubmitregisterNewUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {

@@ -1,5 +1,7 @@
 package com.miw.farmersborrowbench.beans;
 
+import com.miw.farmersborrowbench.beans.entity.User;
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 

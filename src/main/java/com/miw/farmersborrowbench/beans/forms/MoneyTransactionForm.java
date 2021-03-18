@@ -1,7 +1,6 @@
-package com.miw.farmersborrowbench.forms;
+package com.miw.farmersborrowbench.beans.forms;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 
 public class MoneyTransactionForm {
 

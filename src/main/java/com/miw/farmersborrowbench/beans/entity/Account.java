@@ -1,4 +1,4 @@
-package com.miw.farmersborrowbench.beans;
+package com.miw.farmersborrowbench.beans.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;

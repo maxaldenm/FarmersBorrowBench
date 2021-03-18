@@ -1,9 +1,8 @@
 package com.miw.farmersborrowbench.controllers;
 
-import com.miw.farmersborrowbench.beans.Account;
-import com.miw.farmersborrowbench.beans.Login;
-import com.miw.farmersborrowbench.beans.MoneyTransaction;
-import com.miw.farmersborrowbench.beans.User;
+import com.miw.farmersborrowbench.beans.entity.Account;
+import com.miw.farmersborrowbench.beans.entity.MoneyTransaction;
+import com.miw.farmersborrowbench.beans.entity.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.MoneyTransactionRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
