@@ -1,10 +1,11 @@
 package com.miw.farmersborrowbench.controllers;
 
 import com.miw.farmersborrowbench.beans.entity.Account;
-import com.miw.farmersborrowbench.services.Iban;
 import com.miw.farmersborrowbench.beans.entity.User;
+import com.miw.farmersborrowbench.beans.forms.Login;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
+import com.miw.farmersborrowbench.services.Iban;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +37,11 @@ public class RegisterNewUserController {
     @ModelAttribute("sectorItems")
     public List<String> getSectorItems() {
         return Arrays.asList(new String[]{"Weed", "XTC", "Meth", "Adult", "Crypto"});
+    }
+
+    @ModelAttribute("login")
+    public Login getDefaultLogin() {
+        return new Login();
     }
 
     @GetMapping("/goToRegisterNewUser")
