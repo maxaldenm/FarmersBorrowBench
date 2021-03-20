@@ -71,16 +71,17 @@
         <div class="fadeInOne">
             <div class="account">
                 <c:forEach var="account" items="${accountList}">
-                        <div class="accountOneInfoBar">
-                            <h5 class="userAccountOneIban">IBAN:</h5>
-                            <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
-                            <h5 class="userAccountOnebalance">balance: </h5>
-                            <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
-                            <div class="selectionBar selectionBarButton">
-                                <a class="myButton"
-                                   href="${pageContext.request.contextPath}/goToAccountTransactions?accountNumber=${account.accountNumber}">Select</a>
-                            </div>
-                        </div><!-- accountOneInfoBar -->
+                    <div class="accountOneInfoBar">
+                        <h5 class="userAccountOneIban">IBAN:</h5>
+                        <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
+                        <h5 class="userAccountOnebalance">balance: </h5>
+                        <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
+                        <div class="selectionBar selectionBarButton">
+                            <a class="myButton"
+                               href="${pageContext.request.contextPath}/goToAccountTransactions?accountNumber=${account.accountNumber}">Select</a>
+                        </div>
+                    </div>
+                    <!-- accountOneInfoBar -->
                 </c:forEach>
             </div><!-- account -->
 

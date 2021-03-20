@@ -72,24 +72,19 @@ public class MoneyTransaction {
 
     public String amountWithoutDecimalToString() {
         String amountString = String.valueOf(this.amount);
-        String f;
         String[] parts = amountString.split("\\.");
-        f = parts[0];
-
-        return f;
+        return parts[0];
     }
 
     public String amountOnlyDecimalPlacesToString() {
         String amountString = String.valueOf(this.amount);
         String[] parts = amountString.split("\\.");
-        String l;
         if (parts[1].isEmpty()) {
             return "00";
         } else if (parts[1].length() == 1) {
             return parts[1] + "0";
         } else
-            l = parts[1].substring(0, 2);
-        return l;
+            return parts[1].substring(0, 2);
     }
 
     public String localDateTimeToDateWithSlash() {
