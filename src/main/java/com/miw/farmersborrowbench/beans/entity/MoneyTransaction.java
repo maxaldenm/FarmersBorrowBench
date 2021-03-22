@@ -25,6 +25,17 @@ public class MoneyTransaction {
 
     private LocalDateTime date;
 
+    public MoneyTransaction() {
+    }
+
+    public MoneyTransaction(double amount, String description, Account debitAccount, Account creditAccount, LocalDateTime date) {
+        this.amount = amount;
+        this.description = description;
+        this.debitAccount = debitAccount;
+        this.creditAccount = creditAccount;
+        this.date = date;
+    }
+
     public int getId() {
         return id;
     }

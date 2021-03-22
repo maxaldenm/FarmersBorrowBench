@@ -68,7 +68,6 @@ public class AccountOverviewController {
         model.addAttribute("search", search);
         return "accountOverview";
     }
-
 }
 
 

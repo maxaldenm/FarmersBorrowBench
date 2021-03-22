@@ -72,7 +72,7 @@
 
                 <label><h3>MKB:</h3></label>
 
-                <input type="checkbox" class="trigger" value="MKB"/>
+                <form:checkbox class="trigger" path="MKB"/>
                 <div class="showMkb">
                     <label for="sector"><h3>Sector:</h3></label>
                     <form:select path="sector" items="${sectorItems}"/><br>
