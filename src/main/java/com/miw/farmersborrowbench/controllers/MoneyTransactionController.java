@@ -52,7 +52,7 @@ public class MoneyTransactionController {
         System.out.println("submit iban name checker ");
         model.addAttribute("accountNumber",moneyTransactionForm.getCreditIban());
         System.out.println(model.getAttribute("accountNumber"));
-
+        //moneyTransactionForm.isOk();
         Account debitAccount = accountRepository.findAccountByAccountNumber(moneyTransactionForm.getDebitIban());
         User checkUser = null;
         List<User> userList = null;

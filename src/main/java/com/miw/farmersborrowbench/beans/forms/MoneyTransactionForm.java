@@ -1,5 +1,6 @@
 package com.miw.farmersborrowbench.beans.forms;
 
+import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.NotEmpty;
 
 public class MoneyTransactionForm {
@@ -23,6 +24,11 @@ public class MoneyTransactionForm {
     }
 
     private String checkLnameText;
+
+    @AssertFalse(message = "wtf LOL")
+    private boolean isOk() {
+        return debitIban.equals(creditIban);
+    }
 
 
     @NotEmpty

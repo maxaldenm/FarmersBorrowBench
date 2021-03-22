@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
-//    @Query(value = "select max(accountNumber) from Account", nativeQuery = true)
+//    @Query(value = "select max(accountNumber) from Account", nativeQuery = true)https://git.fhict.nl/I476289/farmersborrowbench.git
 //    int searchLastaccountNumber();
 
     @Query(value = "SELECT MAX(a.accountNumber) FROM Account a")
