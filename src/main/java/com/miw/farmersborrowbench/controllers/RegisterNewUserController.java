@@ -54,17 +54,6 @@ public class RegisterNewUserController {
     public String processtSubmitregisterNewUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
         System.out.println("submit New User");
         if (result.hasErrors()) {
-            BeanPropertyBindingResult result2 = new BeanPropertyBindingResult(user, result.getObjectName());
-            for (ObjectError error : result.getGlobalErrors()) {
-                result2.addError(error);
-            }
-            for (FieldError error : result.getFieldErrors()) {
-                if (error.getField().equals("password"))
-                    result2.addError(new FieldError(error.getObjectName(), error.getField(), null, error.isBindingFailure(), error.getCodes(), error.getArguments(), error.getDefaultMessage()));
-                else
-                    result2.addError(new FieldError(error.getObjectName(), error.getField(), error.getRejectedValue(), error.isBindingFailure(), error.getCodes(), error.getArguments(), error.getDefaultMessage()));
-            }
-            model.addAllAttributes(result2.getModel());
             return "registerNewUser";
         }
         System.out.println("user object bsn:" + user.getBsn());

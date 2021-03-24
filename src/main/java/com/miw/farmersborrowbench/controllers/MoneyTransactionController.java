@@ -137,12 +137,17 @@ public class MoneyTransactionController {
         accountRepository.save(creditAccount);
 
         //set Entity bean moneyTransaction to the values of the moneyTransactionFrom
-        MoneyTransaction moneyTransaction = new MoneyTransaction();
-        moneyTransaction.setAmount(Double.parseDouble(moneyTransactionForm.getAmount()));
-        moneyTransaction.setDescription(moneyTransactionForm.getDescription());
-        moneyTransaction.setDebitAccount(debitAccount);
-        moneyTransaction.setCreditAccount(creditAccount);
-        moneyTransaction.setDate(LocalDateTime.now());
+        MoneyTransaction moneyTransaction = new MoneyTransaction(Double.parseDouble(moneyTransactionForm.getAmount()),
+                moneyTransactionForm.getDescription(),
+                debitAccount,
+                creditAccount,
+                LocalDateTime.now());
+//        MoneyTransaction moneyTransaction = new MoneyTransaction();
+//        moneyTransaction.setAmount(Double.parseDouble(moneyTransactionForm.getAmount()));
+//        moneyTransaction.setDescription(moneyTransactionForm.getDescription());
+//        moneyTransaction.setDebitAccount(debitAccount);
+//        moneyTransaction.setCreditAccount(creditAccount);
+//        moneyTransaction.setDate(LocalDateTime.now());
         moneyTransactionRepository.save(moneyTransaction);
 
         //add creditAccount to the model to pass it back to accountTransactions overview
