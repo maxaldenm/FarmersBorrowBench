@@ -17,25 +17,31 @@ import java.util.Locale;
 public class PopulateModelService {
 
     @Autowired
+    HttpSession session;
+
+    @Autowired
     AccountRepository accountRepository;
 
     @Autowired
     MoneyTransactionRepository moneyTransactionRepository;
 
-    public List<Account> populateAccountList(HttpSession session) {
+    public List<Account> populateAccountList() {
         return accountRepository.findAllByUsersContains((User) session.getAttribute("user"));
     }
 
     public List<MoneyTransaction> populateMoneyTransactionList(String accountNumber) {
         Account account = accountRepository.findAccountByAccountNumber(accountNumber);
-        return moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+        session.setAttribute("account", account);
+        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+        MoneyTransaction.Comparators.BY_DATE_REVERSED.sort(moneyTransactions);
+        return moneyTransactions;
     }
 
     public Account fetchAccount(String accountNumber) {
         return accountRepository.findAccountByAccountNumber(accountNumber);
     }
 
-    public List<Account> populateSearchAccountList(HttpSession session, String search) {
+    public List<Account> populateSearchAccountList(String search) {
         User user = (User) session.getAttribute("user");
         List<Account> accounts = user.getAccounts();
         List<Account> foundAccounts = new ArrayList<>();
@@ -47,4 +53,29 @@ public class PopulateModelService {
         return foundAccounts;
     }
 
+    public List<MoneyTransaction> populateSearchTransactionList(String search) {
+        Account account = (Account) session.getAttribute("account");
+        List<MoneyTransaction> transactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+        List<MoneyTransaction> foundTransactions = new ArrayList<>();
+        String searchLower = search.toLowerCase(Locale.ROOT);
+        for (MoneyTransaction t : transactions
+        ) {
+            if (t.toSearchString().toLowerCase().contains(searchLower)) foundTransactions.add(t);
+        }
+        return foundTransactions;
+    }
+
+    public List<MoneyTransaction> populateSortedMoneyTransactionList(String accountNumber, String sort) {
+        Account account = accountRepository.findAccountByAccountNumber(accountNumber);
+        session.setAttribute("account", account);
+        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+        switch (sort) {
+            case "date": MoneyTransaction.Comparators.BY_DATE_REVERSED.sort(moneyTransactions); break;
+            case "account": MoneyTransaction.Comparators.BY_ACCOUNT.sort(moneyTransactions); break;
+            case "description": MoneyTransaction.Comparators.BY_DESCRIPTION.sort(moneyTransactions); break;
+            case "amount": MoneyTransaction.Comparators.BY_AMOUNT_REVERSED.sort(moneyTransactions); break;
+            default: MoneyTransaction.Comparators.BY_DATE_REVERSED.sort(moneyTransactions); break;
+        }
+        return moneyTransactions;
+    }
 }

@@ -160,8 +160,8 @@ public class MoneyTransactionController {
         creditUser = userRepository.searchByBsn(creditUser.getBsn());
 
         session.setAttribute("user", creditUser);
+        session.setAttribute("account", creditAccount);
         model.addAttribute("moneyTransactions", moneyTransactions);
-        model.addAttribute("account", creditAccount);
         return "accountTransactions";
 
 

@@ -41,6 +41,7 @@ public class HomeController {
         System.out.println("go to accountvoerview test");
         User user = userRepository.searchByName(username);
         session.setAttribute("user", user);
+        session.setAttribute("isLoggedIn", true);
         return "forward:/accountOverview";
     }
 }

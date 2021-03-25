@@ -25,7 +25,7 @@ public class AccountOverviewController {
     public String getAccountOverview(HttpSession session, Model model) {
         System.out.println("postAccountOverview");
         if (session.getAttribute("isLoggedIn") != null) {
-            model.addAttribute("accountList", populateModelService.populateAccountList(session));
+            model.addAttribute("accountList", populateModelService.populateAccountList());
             return "accountOverview";
         } else {
             return "login";
@@ -43,7 +43,7 @@ public class AccountOverviewController {
     @PostMapping("/searchAccountOverview")
     public String searchAccountOverview(@RequestParam("search") String search, Model model, HttpSession session) {
         System.out.println("search account in accountoverview");
-        model.addAttribute("accountList", populateModelService.populateSearchAccountList(session, search));
+        model.addAttribute("accountList", populateModelService.populateSearchAccountList(search));
         model.addAttribute("search", search);
         return "accountOverview";
     }
