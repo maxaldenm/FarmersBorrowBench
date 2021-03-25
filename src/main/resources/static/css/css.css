@@ -622,6 +622,19 @@ nav {
     align-items: center;
 }
 
+.columnSort {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.columnSort:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
 .transferDate {
     grid-column: 2/3;
 }

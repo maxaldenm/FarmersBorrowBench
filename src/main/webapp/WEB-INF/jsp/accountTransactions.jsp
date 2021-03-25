@@ -40,6 +40,22 @@
 
     <div class="fadeInOne">
 
+        <div class="form-container">
+            <form action="/searchTransactionOverview" method="post">
+                <label><h3>Search in accounts:</h3></label>
+                <input path="search" name="search" value="${search}"/><br>
+                <div class="buttons">
+                    <input class="myButton" type="submit" value="Search">
+                </div>
+            </form>
+            <form action="/accountTransactions" method="post">
+                <div class="buttons">
+                    <input class="myButton" type="submit" value="Cancel">
+                </div>
+            </form>
+        </div>
+        <br><br><br>
+
         <div class="thisAccount">
             <div class="thisAccountInfoBar">
                 <h5 class="userAccountOneIban">IBAN:</h5>
@@ -49,9 +65,10 @@
             </div>
             <!-- accountOneInfoBar -->
             <div class="thisTransactionInfoBar">
-                <h5 class="creditAccount">transfer account</h5>
-                <h5 class="transferDescription">transfer Description</h5>
-                <h5 class="transferAmount">Amount</h5>
+                <a href="${pageContext.request.contextPath}/sortAccountTransactions?sort=date" class="transferDate columnSort">transfer date</a>
+                <a href="${pageContext.request.contextPath}/sortAccountTransactions?sort=account" class="creditAccount columnSort">transfer account</a>
+                <a href="${pageContext.request.contextPath}/sortAccountTransactions?sort=description" class="transferDescription columnSort">transfer Description</a>
+                <a href="${pageContext.request.contextPath}/sortAccountTransactions?sort=amount" class="transferAmount columnSort">Amount</a>
             </div>
             <!-- thisTransactionInfoBar -->
             <div class="thisAccountTransactionView">
