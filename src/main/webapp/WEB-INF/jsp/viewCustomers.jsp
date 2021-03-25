@@ -36,38 +36,35 @@
 </nav>
 
 <main>
-    <h2>Transaction</h2>
-    <div class="fadeInOne">
-        <div class="form-container">
-            <h3>transaction for ${accountNumber}</h3>
-            <%--@elvariable id="user" type="com.workshopspringframework.beans.User"--%>
-            <form:form action="/moneyTransaction" method="post" modelAttribute="moneytransactionform">
+    <h2>Customer Overview FBB</h2>
+    <em>Welcome ${sessionScope.user.fname} ${sessionScope.user.getsuffix()} ${sessionScope.user.lname}</em>
 
-                <label for="amount"><h3>Amount:</h3></label>
-                <form:input path="amount" type="text"/><form:errors path="amount" cssClass="error"/><br>
-
-                <label for="description"><h3>Description:</h3></label>
-                <form:input path="description"/><form:errors path="description" cssClass="error"/><br>
-
-                <label for="debitIban"><h3>IBAN receiver:</h3></label>
-                <form:input path="debitIban" type="text"/><form:errors path="debitIban" cssClass="error"/>
-                <form:checkbox path="checkIban" class="checkerCheckbox"></form:checkbox><br>
-
-                <label for="lastName"><h3>Lastname receiver:</h3></label>
-                <form:input path="lastName"/><form:errors path="lastName" cssClass="error"/>
-                <form:checkbox path="checkLname" class="checkerCheckbox"></form:checkbox><br>
-
-
-                <form:hidden path="creditIban" value="${accountNumber}"/>
-
-                <div class="buttons">
-                    <input class="myButton" type="submit" name="submit" value="Submit"  >
-                    <input class="myButton" type="submit" name="checker" value="Checker" >
+    <div class="accountOverviewButtons">
+        <a class="userInformation opmaakAccountOverview" href="${pageContext.request.contextPath}/getTopAccountBalance">
+            <h4>Top 10 Account Balance</h4>
+        </a>
+        <a class="addNewAccount opmaakAccountOverview" href="#">
+            <h4>Top 10 Transactions</h4></a>
+        <a class="editAccountInformation opmaakAccountOverview" href="#">
+            <h4>Highest Balance</h4>
+        </a>
+        <a class="linkNewUserToAccount opmaakAccountOverview" href="#">
+            <h4>reserve</h4>
+        </a>
+    </div>
+    <!-- accountOverviewButtons -->
+    <div class="overviewPanel"><!-- overview panel -->
+        <c:if test="${!empty(sortedAccountList)}">
+            <c:forEach var="account" items="${sortedAccountList}">
+                <div class="topBalance">
+                        ${account.balance}
                 </div>
-
-            </form:form>
-        </div><!-- form-container -->
-    </div><!-- fadeInOne -->
+                <div class="topIban">
+                        ${account.accountNumber}
+                </div>
+            </c:forEach>
+        </c:if>
+    </div>
 </main>
 <script src="${pageContext.request.contextPath}/js/app.js"></script>
 </body>

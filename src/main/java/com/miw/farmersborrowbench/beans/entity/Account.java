@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Account {
+public class Account implements Comparable<Account> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -18,6 +18,22 @@ public class Account {
 
     @ManyToMany(mappedBy = "accounts")
     private List<User> users = new ArrayList<>();
+
+    public Account(Integer id, double balance, String accountNumber, String name, int pinNumber, boolean MKB,
+                   List<User> users) {
+        this.id = id;
+        this.balance = balance;
+        this.accountNumber = accountNumber;
+        this.name = name;
+        this.pinNumber = pinNumber;
+        this.MKB = MKB;
+        this.users = users;
+    }
+
+    public Account() {
+    }
+
+
 
     public Integer getId() {
         return id;
@@ -83,6 +99,11 @@ public class Account {
     }
 
     public String toSearchString() {
-        return balance+" "+accountNumber+" "+name;
+        return balance + " " + accountNumber + " " + name;
+    }
+
+    @Override
+    public int compareTo(Account otherAccount) {
+        return Double.compare(otherAccount.getBalance(), this.balance);
     }
 }

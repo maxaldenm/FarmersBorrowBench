@@ -41,10 +41,10 @@
             <form:form action="/registerNewUser" method="post" modelAttribute="user">
 
                 <label for="username"><h3>Username:</h3></label>
-                <form:input path="username" type="text"/><form:errors path="username" cssClass="error"/><br>
+                <form:input path="username" type="text" placeholder="Username" value="${sessionScope.user.username}"/><form:errors path="username" cssClass="error"/><br>
 
                 <label for="password"><h3>Password:</h3></label>
-                <form:password path="password"/><form:errors path="password" cssClass="error"/><br>
+                <form:password path="password" placeholder="Password"/><form:errors path="password" cssClass="error"/><br>
 
                 <label for="bsn"><h3>BSN:</h3></label>
                 <form:input path="bsn" type="text"/><form:errors path="bsn" cssClass="error"/><br>
