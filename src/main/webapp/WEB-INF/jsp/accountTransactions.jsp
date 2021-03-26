@@ -80,14 +80,13 @@
                             ${transaction.localDateTimeToDateWithSlash()}
                         </div>
                         <div class="creditAccount">
-                            <c:if test="${transaction.creditAccount.accountNumber==account.accountNumber}">${transaction.debitAccount.accountNumber}</c:if>
-                            <c:if test="${transaction.debitAccount.accountNumber==account.accountNumber}">${transaction.creditAccount.accountNumber}</c:if>
+                            ${transaction.otherAccount}
                         </div>
                         <div class="transferDescription">
                                 ${transaction.description}
                         </div>
                         <c:choose>
-                            <c:when test="${transaction.creditAccount.accountNumber==account.accountNumber}">
+                            <c:when test="${transaction.currentAccount==account.accountNumber}">
                                 <div class="plusMinus">
                                     -
                                 </div>

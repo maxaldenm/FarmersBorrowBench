@@ -6,6 +6,7 @@ import com.miw.farmersborrowbench.services.Iban;
 import com.miw.farmersborrowbench.beans.entity.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,13 +46,11 @@ public class RegisterNewAccountController {
 
         User user = (User) session.getAttribute("user");
 
-        Account account = new Account();
+        ModelMapper modelMapper = new ModelMapper();
+        Account account = modelMapper.map(accountNewForm, Account.class);
         if (user != null) {
             account.setUser(user);
             account.setBalance(0);
-            account.setName(accountNewForm.getName());
-            account.setPinNumber(Integer.parseInt(accountNewForm.getPinNumber()));
-            account.setMKB(accountNewForm.isMKB());
             String lastBankNumber = accountRepository.searchLastAccountNumber();
             if (lastBankNumber == null) {
                 lastBankNumber = "NL69FBBA6969697055";
@@ -62,7 +61,6 @@ public class RegisterNewAccountController {
             user.addAccount(account);
             accountRepository.save(account);
             userRepository.save(user);
-            session.setAttribute("user", user);
         }
         return "forward:/accountOverview";
     }
