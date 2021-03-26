@@ -23,27 +23,21 @@ public class AccountTransactionsController {
     @Autowired
     PopulateModelService populateModelService;
 
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    AccountRepository accountRepository;
-
-    @Autowired
-    MoneyTransactionRepository moneyTransactionRepository;
-
     @PostMapping("/accountTransactions")
     public String getAccountTransactions(@SessionAttribute("account") Account account, Model model) {
         System.out.println("get account transactions");
-        model.addAttribute("moneyTransactions", populateModelService.populateMoneyTransactionList(account.getAccountNumber()));
+        model.addAttribute("moneyTransactions",
+                populateModelService.populateMoneyTransactionList(account.getAccountNumber()));
         model.addAttribute("account", account);
         return "accountTransactions";
     }
 
     @GetMapping("/sortAccountTransactions")
-    public String getSortAccountTransactions(@SessionAttribute("account") Account account, @Param("sort") String sort, Model model) {
+    public String getSortAccountTransactions(@SessionAttribute("account") Account account, @Param("sort") String sort
+            , Model model) {
         System.out.println("sort account transactions");
-        model.addAttribute("moneyTransactions", populateModelService.populateSortedMoneyTransactionList(account.getAccountNumber(), sort));
+        model.addAttribute("moneyTransactions",
+                populateModelService.populateSortedMoneyTransactionList(account.getAccountNumber(), sort));
         model.addAttribute("account", account);
         return "accountTransactions";
     }
@@ -55,7 +49,8 @@ public class AccountTransactionsController {
     }
 
     @PostMapping("/searchTransactionOverview")
-    public String searchAccountOverview(@SessionAttribute("account") Account account, @RequestParam("search") String search, Model model) {
+    public String searchAccountOverview(@SessionAttribute("account") Account account,
+                                        @RequestParam("search") String search, Model model) {
         System.out.println("search in transactions");
         model.addAttribute("moneyTransactions", populateModelService.populateSearchTransactionList(search));
         model.addAttribute("account", account);

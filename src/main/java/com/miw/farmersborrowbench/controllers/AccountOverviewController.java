@@ -41,7 +41,7 @@ public class AccountOverviewController {
     }
 
     @PostMapping("/searchAccountOverview")
-    public String searchAccountOverview(@RequestParam("search") String search, Model model, HttpSession session) {
+    public String searchAccountOverview(@RequestParam("search") String search, Model model) {
         System.out.println("search account in accountoverview");
         model.addAttribute("accountList", populateModelService.populateSearchAccountList(search));
         model.addAttribute("search", search);

@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@SessionAttributes("login")
+/*@SessionAttributes("login")*/
 public class LoginController {
 
     @Autowired
