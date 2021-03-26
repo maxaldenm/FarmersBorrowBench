@@ -1,8 +1,6 @@
 package com.miw.farmersborrowbench.beans.entity;
 
 import com.miw.farmersborrowbench.beans.Sector;
-import com.miw.farmersborrowbench.beans.entity.Account;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -169,6 +167,4 @@ public class User {
     public void setHouseNr(String huisNr) {
         this.houseNr = huisNr;
     }
-
-
 }

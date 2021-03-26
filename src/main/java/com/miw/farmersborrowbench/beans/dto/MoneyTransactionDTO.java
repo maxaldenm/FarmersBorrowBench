@@ -13,9 +13,9 @@ public class MoneyTransactionDTO implements Comparable<MoneyTransactionDTO> {
 
     private String description;
 
-    private String currentAccount;
+    private String senderAccount;
 
-    private String otherAccount;
+    private String receiverAccount;
 
     private LocalDateTime date;
 
@@ -35,20 +35,20 @@ public class MoneyTransactionDTO implements Comparable<MoneyTransactionDTO> {
         this.description = description;
     }
 
-    public String getCurrentAccount() {
-        return currentAccount;
+    public String getSenderAccount() {
+        return senderAccount;
     }
 
-    public void setCurrentAccount(String currentAccount) {
-        this.currentAccount = currentAccount;
+    public void setSenderAccount(String senderAccount) {
+        this.senderAccount = senderAccount;
     }
 
-    public String getOtherAccount() {
-        return otherAccount;
+    public String getReceiverAccount() {
+        return receiverAccount;
     }
 
-    public void setOtherAccount(String otherAccount) {
-        this.otherAccount = otherAccount;
+    public void setReceiverAccount(String receiverAccount) {
+        this.receiverAccount = receiverAccount;
     }
 
     public LocalDateTime getDate() {
@@ -85,14 +85,14 @@ public class MoneyTransactionDTO implements Comparable<MoneyTransactionDTO> {
         return "MoneyTransactionDTO{" +
                 "amount=" + amount +
                 ", description='" + description + '\'' +
-                ", currentAccount='" + currentAccount + '\'' +
-                ", otherAccount='" + otherAccount + '\'' +
+                ", senderAccount='" + senderAccount + '\'' +
+                ", receiverAccount='" + receiverAccount + '\'' +
                 ", date=" + date +
                 '}';
     }
 
     public String toSearchString() {
-        return date.toString()+" "+currentAccount+" "+otherAccount+" "+description+" "+amount;
+        return date.toString()+" "+ senderAccount +" "+ receiverAccount +" "+description+" "+amount;
     }
 
     @Override
@@ -121,7 +121,7 @@ public class MoneyTransactionDTO implements Comparable<MoneyTransactionDTO> {
         },
         BY_ACCOUNT {
             public int compare(MoneyTransactionDTO o1, MoneyTransactionDTO o2) {
-                return (o1.getOtherAccount().compareTo(o2.getOtherAccount()));
+                return (o1.getReceiverAccount().compareTo(o2.getReceiverAccount()));
             }
 
             public void sort(final List<MoneyTransactionDTO> l) {

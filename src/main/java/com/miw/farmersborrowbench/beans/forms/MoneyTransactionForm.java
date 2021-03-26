@@ -1,6 +1,6 @@
 package com.miw.farmersborrowbench.beans.forms;
 
-import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotEmpty;
 
 public class MoneyTransactionForm {
@@ -25,19 +25,38 @@ public class MoneyTransactionForm {
 
     private String checkLnameText;
 
-    @AssertFalse(message = "wtf LOL")
-    private boolean isOk() {
-        return debitIban.equals(creditIban);
+
+    @AssertTrue(message = "{debitaccount.equals.creditaccount}")
+    public boolean isCreditEqualsDebitTrue() {
+        if(senderAccount != null) {
+            if(senderAccount.equals(receiverAccount)) {
+                return false;
+            }
+        }
+        return true;
     }
 
+
+//    @AssertTrue(message = "cannot be equal")
+//    private boolean isCreditEqualToDebit() {
+//        if(debitIban != null) {
+//            if (creditIban.equals(debitIban)) {
+//                System.out.println("inside false");
+//                return false;
+//            }
+//        }
+//        System.out.println("inside true");
+//        return true;
+//    }
 
     @NotEmpty
     private String description;
 
     @NotEmpty
-    private String debitIban;
+    private String senderAccount;
 
-    private String creditIban;
+    @NotEmpty
+    private String receiverAccount;
 
     public String getAmount() {
         return amount;
@@ -55,20 +74,20 @@ public class MoneyTransactionForm {
         this.description = description;
     }
 
-    public String getDebitIban() {
-        return debitIban;
+    public String getSenderAccount() {
+        return senderAccount;
     }
 
-    public void setDebitIban(String debitIban) {
-        this.debitIban = debitIban;
+    public void setSenderAccount(String senderAccount) {
+        this.senderAccount = senderAccount;
     }
 
-    public String getCreditIban() {
-        return creditIban;
+    public String getReceiverAccount() {
+        return receiverAccount;
     }
 
-    public void setCreditIban(String creditIban) {
-        this.creditIban = creditIban;
+    public void setReceiverAccount(String receiverAccount) {
+        this.receiverAccount = receiverAccount;
     }
 
     public boolean isCheckLname() {
@@ -94,6 +113,5 @@ public class MoneyTransactionForm {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
 
 }

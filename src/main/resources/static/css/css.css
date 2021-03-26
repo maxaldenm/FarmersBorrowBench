@@ -589,7 +589,7 @@ nav {
 
 .thisAccountTransactionView {
     margin: 0;
-    height: 50vh;
+    height: 30vh;
     position: relative;
     top: 0;
     overflow-y: auto;
@@ -620,6 +620,7 @@ nav {
     border-bottom: #242424 1px solid;
     background-color: #d3d3d3;
     align-items: center;
+
 }
 
 .columnSort {

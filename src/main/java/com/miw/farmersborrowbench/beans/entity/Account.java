@@ -15,7 +15,6 @@ public class Account implements Comparable<Account> {
     private int pinNumber;
     private boolean MKB;
 
-
     @ManyToMany(mappedBy = "accounts")
     private List<User> users = new ArrayList<>();
 
@@ -32,8 +31,6 @@ public class Account implements Comparable<Account> {
 
     public Account() {
     }
-
-
 
     public Integer getId() {
         return id;

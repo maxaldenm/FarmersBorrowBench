@@ -34,8 +34,10 @@ public class PopulateModelService {
     public List<MoneyTransactionDTO> populateMoneyTransactionList(String accountNumber) {
         Account account = accountRepository.findAccountByAccountNumber(accountNumber);
         session.setAttribute("account", account);
-        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsBySenderAccountAccountNumberOrReceiverAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
         List<MoneyTransactionDTO> moneyTransactionDTOS = changeMoneyTransactionToMoneyTransactionDTOList(account, moneyTransactions);
+        System.out.println(moneyTransactions.toString());
+        System.out.println(moneyTransactionDTOS.toString());
         MoneyTransactionDTO.Comparators.BY_DATE_REVERSED.sort(moneyTransactionDTOS);
         return moneyTransactionDTOS;
     }
@@ -58,7 +60,7 @@ public class PopulateModelService {
 
     public List<MoneyTransactionDTO> populateSearchTransactionList(String search) {
         Account account = (Account) session.getAttribute("account");
-        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsBySenderAccountAccountNumberOrReceiverAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
         List<MoneyTransactionDTO> moneyTransactionDTOS = changeMoneyTransactionToMoneyTransactionDTOList(account, moneyTransactions);
         List<MoneyTransactionDTO> foundTransactions = new ArrayList<>();
         String searchLower = search.toLowerCase(Locale.ROOT);
@@ -72,7 +74,7 @@ public class PopulateModelService {
     public List<MoneyTransactionDTO> populateSortedMoneyTransactionList(String accountNumber, String sort) {
         Account account = accountRepository.findAccountByAccountNumber(accountNumber);
         session.setAttribute("account", account);
-        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsBySenderAccountAccountNumberOrReceiverAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
         List<MoneyTransactionDTO> moneyTransactionDTOS = changeMoneyTransactionToMoneyTransactionDTOList(account, moneyTransactions);
         switch (sort) {
             case "date": MoneyTransactionDTO.Comparators.BY_DATE_REVERSED.sort(moneyTransactionDTOS); break;
@@ -90,12 +92,12 @@ public class PopulateModelService {
         ) {
             ModelMapper modelMapper = new ModelMapper();
             MoneyTransactionDTO moneyTransactionDTO = modelMapper.map(t, MoneyTransactionDTO.class);
-            moneyTransactionDTO.setCurrentAccount(currentAccount.getAccountNumber());
-            if(currentAccount.getAccountNumber().equals(t.getCreditAccount().getAccountNumber())){
-                moneyTransactionDTO.setOtherAccount(t.getDebitAccount().getAccountNumber());
+            moneyTransactionDTO.setSenderAccount(currentAccount.getAccountNumber());
+            if(currentAccount.getAccountNumber().equals(t.getReceiverAccount().getAccountNumber())){
+                moneyTransactionDTO.setReceiverAccount(t.getSenderAccount().getAccountNumber());
                 moneyTransactionDTO.setAmount(moneyTransactionDTO.getAmount()*-1);
             }else{
-                moneyTransactionDTO.setOtherAccount(t.getCreditAccount().getAccountNumber());
+                moneyTransactionDTO.setReceiverAccount(t.getReceiverAccount().getAccountNumber());
             }
             moneyTransactionDTOS.add(moneyTransactionDTO);
         }

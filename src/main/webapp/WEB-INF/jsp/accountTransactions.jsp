@@ -59,7 +59,7 @@
         <div class="thisAccount">
             <div class="thisAccountInfoBar">
                 <h5 class="userAccountOneIban">IBAN:</h5>
-                <h4 class="userAccountOneIbanInfo">${account.accountNumber}</h4>
+                <h4 class="userAccountOneIbanInfo">${accountNumber}</h4>
                 <h5 class="userAccountOnebalance">balance: </h5>
                 <h4 class="userAccountOnebalanceInfo">${account.balance}</h4>
             </div>
@@ -80,26 +80,26 @@
                             ${transaction.localDateTimeToDateWithSlash()}
                         </div>
                         <div class="creditAccount">
-                            ${transaction.otherAccount}
+                            ${transaction.receiverAccount}
                         </div>
                         <div class="transferDescription">
                                 ${transaction.description}
                         </div>
                         <c:choose>
-                            <c:when test="${transaction.currentAccount==account.accountNumber}">
+                            <c:when test="${transaction.receiverAccount==accountNumber}">
                                 <div class="plusMinus">
-                                    -
+                                    +
                                 </div>
-                                <div class="transferAmountTrue">
+                                <div class="transferAmountFalse">
                                         ${transaction.amountWithoutDecimalToString()} ,
                                     <sup>${transaction.amountOnlyDecimalPlacesToString()}</sup>
                                 </div>
                             </c:when>
                             <c:otherwise>
                                 <div class="plusMinus">
-                                    +
+                                    -
                                 </div>
-                                <div class="transferAmountFalse">
+                                <div class="transferAmountTrue">
                                         ${transaction.amountWithoutDecimalToString()} ,
                                     <sup>${transaction.amountOnlyDecimalPlacesToString()}</sup>
                                 </div>

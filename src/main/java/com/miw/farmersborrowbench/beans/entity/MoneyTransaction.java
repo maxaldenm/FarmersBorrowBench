@@ -1,14 +1,8 @@
 package com.miw.farmersborrowbench.beans.entity;
 
-import com.miw.farmersborrowbench.beans.entity.Account;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
 
 @Entity
 public class MoneyTransaction {
@@ -22,21 +16,21 @@ public class MoneyTransaction {
     private String description;
 
     @ManyToOne
-    private Account debitAccount;
+    private Account senderAccount;
 
     @ManyToOne
-    private Account creditAccount;
+    private Account receiverAccount;
 
     private LocalDateTime date;
 
     public MoneyTransaction() {
     }
 
-    public MoneyTransaction(double amount, String description, Account debitAccount, Account creditAccount, LocalDateTime date) {
+    public MoneyTransaction(double amount, String description, Account senderAccount, Account receiverAccount, LocalDateTime date) {
         this.amount = amount;
         this.description = description;
-        this.debitAccount = debitAccount;
-        this.creditAccount = creditAccount;
+        this.senderAccount = senderAccount;
+        this.receiverAccount = receiverAccount;
         this.date = date;
     }
 
@@ -60,20 +54,20 @@ public class MoneyTransaction {
         this.description = description;
     }
 
-    public Account getDebitAccount() {
-        return debitAccount;
+    public Account getSenderAccount() {
+        return senderAccount;
     }
 
-    public void setDebitAccount(Account debitAccount) {
-        this.debitAccount = debitAccount;
+    public void setSenderAccount(Account debitAccount) {
+        this.senderAccount = debitAccount;
     }
 
-    public Account getCreditAccount() {
-        return creditAccount;
+    public Account getReceiverAccount() {
+        return receiverAccount;
     }
 
-    public void setCreditAccount(Account creditAccount) {
-        this.creditAccount = creditAccount;
+    public void setReceiverAccount(Account creditAccount) {
+        this.receiverAccount = creditAccount;
     }
 
     public LocalDateTime getDate() {
@@ -84,13 +78,34 @@ public class MoneyTransaction {
         this.date = date;
     }
 
+    public String amountWithoutDecimalToString() {
+        String amountString = String.valueOf(this.amount);
+        String[] parts = amountString.split("\\.");
+        return parts[0];
+    }
+
+    public String amountOnlyDecimalPlacesToString() {
+        String amountString = String.valueOf(this.amount);
+        String[] parts = amountString.split("\\.");
+        if (parts[1].isEmpty()) {
+            return "00";
+        } else if (parts[1].length() == 1) {
+            return parts[1] + "0";
+        } else
+            return parts[1].substring(0, 2);
+    }
+
+    public String localDateTimeToDateWithSlash() {
+        return DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm").format(this.date);
+    }
+    
     @Override
     public String toString() {
         return "MoneyTransaction{" +
                 "amount=" + amount +
                 ", description='" + description + '\'' +
-                ", debitAccount=" + debitAccount.toString() +
-                ", creditAccount=" + creditAccount.toString() +
+                ", debitAccount=" + senderAccount.toString() +
+                ", creditAccount=" + receiverAccount.toString() +
                 ", date=" + date +
                 '}';
     }

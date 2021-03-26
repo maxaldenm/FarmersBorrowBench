@@ -35,6 +35,8 @@ public class AccountOverviewController {
     @GetMapping("/goToAccountTransactions")
     public String goToAccountTransactions(@RequestParam("accountNumber") String accountNumber, Model model) {
         System.out.println("Go to account transactions");
+        System.out.println(accountNumber);
+        model.addAttribute("accountNumber",accountNumber);
         model.addAttribute("moneyTransactions", populateModelService.populateMoneyTransactionList(accountNumber));
         model.addAttribute("account", populateModelService.fetchAccount(accountNumber));
         return "accountTransactions";

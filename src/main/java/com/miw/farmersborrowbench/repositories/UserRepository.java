@@ -19,7 +19,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     @Query("select u from User u where u.username = :name")
     public User searchByName(@Param("name") String username);
 
-  //  User findUserByLnameContains(String lname);
 
     User findByLnameEqualsAndAccountsContains(String lname, Account account);
 

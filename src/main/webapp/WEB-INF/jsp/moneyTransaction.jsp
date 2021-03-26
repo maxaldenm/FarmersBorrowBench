@@ -47,18 +47,17 @@
                 <form:input path="amount" type="text"/><form:errors path="amount" cssClass="error"/><br>
 
                 <label for="description"><h3>Description:</h3></label>
-                <form:input path="description"/><form:errors path="description" cssClass="error"/><br>
+                <form:input path="description"/><form:errors path="description" cssClass="error"/><form:errors path="creditEqualsDebitTrue" cssClass="error"/><br>
 
-                <label for="debitIban"><h3>IBAN receiver:</h3></label>
-                <form:input path="debitIban" type="text"/><form:errors path="debitIban" cssClass="error"/>
+                <label for="receiverAccount"><h3>IBAN receiver:</h3></label>
+                <form:input path="receiverAccount" type="text"/><form:errors path="receiverAccount" cssClass="error"/>
                 <form:checkbox path="checkIban" class="checkerCheckbox"></form:checkbox><br>
 
                 <label for="lastName"><h3>Lastname receiver:</h3></label>
                 <form:input path="lastName"/><form:errors path="lastName" cssClass="error"/>
                 <form:checkbox path="checkLname" class="checkerCheckbox"></form:checkbox><br>
 
-
-                <form:hidden path="creditIban" value="${accountNumber}"/>
+                <form:hidden path="senderAccount" value="${accountNumber}"/>
 
                 <div class="buttons">
                     <input class="myButton" type="submit" name="submit" value="Submit"  >
