@@ -1,10 +1,12 @@
 package com.miw.farmersborrowbench.services;
 
+import com.miw.farmersborrowbench.beans.dto.MoneyTransactionDTO;
 import com.miw.farmersborrowbench.beans.entity.Account;
 import com.miw.farmersborrowbench.beans.entity.MoneyTransaction;
 import com.miw.farmersborrowbench.beans.entity.User;
 import com.miw.farmersborrowbench.repositories.AccountRepository;
 import com.miw.farmersborrowbench.repositories.MoneyTransactionRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,12 +31,13 @@ public class PopulateModelService {
         return accountRepository.findAllByUsersContains((User) session.getAttribute("user"));
     }
 
-    public List<MoneyTransaction> populateMoneyTransactionList(String accountNumber) {
+    public List<MoneyTransactionDTO> populateMoneyTransactionList(String accountNumber) {
         Account account = accountRepository.findAccountByAccountNumber(accountNumber);
         session.setAttribute("account", account);
         List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
-        MoneyTransaction.Comparators.BY_DATE_REVERSED.sort(moneyTransactions);
-        return moneyTransactions;
+        List<MoneyTransactionDTO> moneyTransactionDTOS = changeMoneyTransactionToMoneyTransactionDTOList(account, moneyTransactions);
+        MoneyTransactionDTO.Comparators.BY_DATE_REVERSED.sort(moneyTransactionDTOS);
+        return moneyTransactionDTOS;
     }
 
     public Account fetchAccount(String accountNumber) {
@@ -53,29 +56,49 @@ public class PopulateModelService {
         return foundAccounts;
     }
 
-    public List<MoneyTransaction> populateSearchTransactionList(String search) {
+    public List<MoneyTransactionDTO> populateSearchTransactionList(String search) {
         Account account = (Account) session.getAttribute("account");
-        List<MoneyTransaction> transactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
-        List<MoneyTransaction> foundTransactions = new ArrayList<>();
+        List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+        List<MoneyTransactionDTO> moneyTransactionDTOS = changeMoneyTransactionToMoneyTransactionDTOList(account, moneyTransactions);
+        List<MoneyTransactionDTO> foundTransactions = new ArrayList<>();
         String searchLower = search.toLowerCase(Locale.ROOT);
-        for (MoneyTransaction t : transactions
+        for (MoneyTransactionDTO t : moneyTransactionDTOS
         ) {
             if (t.toSearchString().toLowerCase().contains(searchLower)) foundTransactions.add(t);
         }
         return foundTransactions;
     }
 
-    public List<MoneyTransaction> populateSortedMoneyTransactionList(String accountNumber, String sort) {
+    public List<MoneyTransactionDTO> populateSortedMoneyTransactionList(String accountNumber, String sort) {
         Account account = accountRepository.findAccountByAccountNumber(accountNumber);
         session.setAttribute("account", account);
         List<MoneyTransaction> moneyTransactions = moneyTransactionRepository.findMoneyTransactionsByDebitAccountAccountNumberOrCreditAccountAccountNumber(account.getAccountNumber(), account.getAccountNumber());
+        List<MoneyTransactionDTO> moneyTransactionDTOS = changeMoneyTransactionToMoneyTransactionDTOList(account, moneyTransactions);
         switch (sort) {
-            case "date": MoneyTransaction.Comparators.BY_DATE_REVERSED.sort(moneyTransactions); break;
-            case "account": MoneyTransaction.Comparators.BY_ACCOUNT.sort(moneyTransactions); break;
-            case "description": MoneyTransaction.Comparators.BY_DESCRIPTION.sort(moneyTransactions); break;
-            case "amount": MoneyTransaction.Comparators.BY_AMOUNT_REVERSED.sort(moneyTransactions); break;
-            default: MoneyTransaction.Comparators.BY_DATE_REVERSED.sort(moneyTransactions); break;
+            case "date": MoneyTransactionDTO.Comparators.BY_DATE_REVERSED.sort(moneyTransactionDTOS); break;
+            case "account": MoneyTransactionDTO.Comparators.BY_ACCOUNT.sort(moneyTransactionDTOS); break;
+            case "description": MoneyTransactionDTO.Comparators.BY_DESCRIPTION.sort(moneyTransactionDTOS); break;
+            case "amount": MoneyTransactionDTO.Comparators.BY_AMOUNT_REVERSED.sort(moneyTransactionDTOS); break;
+            default: MoneyTransactionDTO.Comparators.BY_DATE_REVERSED.sort(moneyTransactionDTOS); break;
         }
-        return moneyTransactions;
+        return moneyTransactionDTOS;
+    }
+
+    private List<MoneyTransactionDTO> changeMoneyTransactionToMoneyTransactionDTOList(Account currentAccount, List<MoneyTransaction> moneyTransactions) {
+        List<MoneyTransactionDTO> moneyTransactionDTOS = new ArrayList<>();
+        for (MoneyTransaction t: moneyTransactions
+        ) {
+            ModelMapper modelMapper = new ModelMapper();
+            MoneyTransactionDTO moneyTransactionDTO = modelMapper.map(t, MoneyTransactionDTO.class);
+            moneyTransactionDTO.setCurrentAccount(currentAccount.getAccountNumber());
+            if(currentAccount.getAccountNumber().equals(t.getCreditAccount().getAccountNumber())){
+                moneyTransactionDTO.setOtherAccount(t.getDebitAccount().getAccountNumber());
+                moneyTransactionDTO.setAmount(moneyTransactionDTO.getAmount()*-1);
+            }else{
+                moneyTransactionDTO.setOtherAccount(t.getCreditAccount().getAccountNumber());
+            }
+            moneyTransactionDTOS.add(moneyTransactionDTO);
+        }
+        return moneyTransactionDTOS;
     }
 }
